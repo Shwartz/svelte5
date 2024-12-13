@@ -15,14 +15,15 @@
 				<a href="/blog">Blog</a>
 				<a href="/news-archive">News archive</a>
 			</nav>
-			<div>[i][c][o][n][s]</div>
+			<div>
+				[i][c][o][n][s]
+			</div>
 		</header>
 		<slot />
 	</div>
 </div>
 
 <style lang="scss">
-
   header {
     display: flex;
   }

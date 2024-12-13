@@ -1,38 +1,197 @@
+<script>
+	import ToggleCompact from '$lib/components/ToggleCompact.svelte';
+</script>
 <h1>Blog <span>tags | tags | tags</span></h1>
+<div>Toggle Compact: <ToggleCompact /></div>
 
 <div class="blog">
-	<section class="blog-left">
+	<section class="post">
 		<div class="visual">a</div>
 		<div class="content">
-			<p>Time | Read | Likes</p>
-			<h1>How to create CSS layout using Flexbox</h1>
-			<p>So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should you
-				rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
-				understand the mechanics behind the layout.</p>
-			<p>Tag | Tag</p>
+				<div class="icons">
+					<div>Time</div>
+					<div>Read</div>
+					<div>Likes</div>
+				</div>
+			<div>
+				<h1>How to create CSS layout using Flexbox</h1>
+				<p>So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should
+					you
+					rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
+					understand the mechanics behind the layout.</p>
+				<div class="tags">
+					<div>Tag</div>
+					<div>Tag</div>
+					<div>Tag</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="post">
+		<div class="visual">a</div>
+		<div class="content">
+				<div class="icons">
+					<div>Time</div>
+					<div>Read</div>
+					<div>Likes</div>
+				</div>
+			<div>
+				<h1>How to create CSS layout using Flexbox</h1>
+				<p>So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should
+					you
+					rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
+					understand the mechanics behind the layout.</p>
+				<div class="tags">
+					<div>Tag</div>
+					<div>Tag</div>
+					<div>Tag</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="post">
+		<div class="visual">a</div>
+		<div class="content">
+				<div class="icons">
+					<div>Time</div>
+					<div>Read</div>
+					<div>Likes</div>
+				</div>
+			<div>
+				<h1>How to create CSS layout using Flexbox</h1>
+				<p>So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should
+					you
+					rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
+					understand the mechanics behind the layout.</p>
+				<div class="tags">
+					<div>Tag</div>
+					<div>Tag</div>
+					<div>Tag</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="post">
+		<div class="visual">a</div>
+		<div class="content">
+				<div class="icons">
+					<div>Time</div>
+					<div>Read</div>
+					<div>Likes</div>
+				</div>
+			<div>
+				<h1>How to create CSS layout using Flexbox</h1>
+				<p>So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should
+					you
+					rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
+					understand the mechanics behind the layout.</p>
+				<div class="tags">
+					<div>Tag</div>
+					<div>Tag</div>
+					<div>Tag</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="post">
+		<div class="visual">a</div>
+		<div class="content">
+				<div class="icons">
+					<div>Time</div>
+					<div>Read</div>
+					<div>Likes</div>
+				</div>
+			<div>
+				<h1>How to create CSS layout using Flexbox</h1>
+				<p>So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should
+					you
+					rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
+					understand the mechanics behind the layout.</p>
+				<div class="tags">
+					<div>Tag</div>
+					<div>Tag</div>
+					<div>Tag</div>
+				</div>
+			</div>
 		</div>
 	</section>
 </div>
 
 <style lang="scss">
-	.blog {
-		background: white;
-	}
-
-	.blog-left {
-		display: flex;
-		gap: 1.5rem;
-
-		> div {
-			width: 50%;
-		}
-	}
-
-  .visual {
-    background: red;
+  .blog {
+    background: white;
   }
 
-	.content {
-		padding: 1rem 0;
-	}
+  .post {
+    display: flex;
+    gap: 1.5rem;
+    border-top: 1px dotted #ffcdcc;
+    border-bottom: 1px dotted #ffcdcc;
+
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
+
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    aspect-ratio: 13/8;
+    background: #f9e4b2;
+  }
+
+  .content {
+    padding: 1.5rem 0;
+    width: 50%;
+  }
+
+  .compact {
+    .post {
+      flex-direction: row;
+    }
+
+    .visual {
+      width: 310px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: row-reverse;
+			width: 100%;
+    }
+
+    .tags {
+      display: flex;
+    }
+  }
+
+:global(.page:has(input#toggleCompact[type="checkbox"]:checked)) .blog {
+	background: #95de95;
+
+  .post {
+    flex-direction: row;
+  }
+
+  .visual {
+    width: 310px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+  }
+
+  .tags {
+    display: flex;
+  }
+}
+
 </style>
+<!--645/400-->
