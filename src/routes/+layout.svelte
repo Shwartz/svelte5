@@ -4,15 +4,26 @@
 </script>
 
 <svelte:head>
-	<title>{$page.data.title ?? 'global title'} | end</title>
+	<title>{$page.data.title ?? 'fallback title'}</title>
 </svelte:head>
+
 <div class="page">
-	<nav>
-		<a href="/">Andris Švarcs</a>
-		<a href="/blog">Blog</a>
-		<a href="/news-archive">News archive</a>
-	</nav>
-
-	<slot />
-
+	<div class="container">
+		<header>
+			<nav>
+				<a href="/">Andris Švarcs</a>
+				<a href="/blog">Blog</a>
+				<a href="/news-archive">News archive</a>
+			</nav>
+			<div>[i][c][o][n][s]</div>
+		</header>
+		<slot />
+	</div>
 </div>
+
+<style lang="scss">
+
+  header {
+    display: flex;
+  }
+</style>
