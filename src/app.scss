@@ -1,6 +1,7 @@
+@use "reset";
 @use "variables" as *;
 
 .page {
-  background: #00ffbb;
-  color: $base-color;
+  background: $base-color;
+  color: var(--primary-text-color);
 }
