@@ -8,8 +8,9 @@
 </svelte:head>
 <div class="page">
 	<nav>
-		<a href="/">Home</a>
-		<a href="/blog">About</a>
+		<a href="/">Andris Švarcs</a>
+		<a href="/blog">Blog</a>
+		<a href="/news-archive">News archive</a>
 	</nav>
 
 	<slot />
