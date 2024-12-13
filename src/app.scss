@@ -1,6 +1,6 @@
-@import "variables";
+@use "variables" as *;
 
 .page {
-  background: red;
+  background: #00ffbb;
   color: $base-color;
 }
