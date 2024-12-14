@@ -1,16 +1,17 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { onNavigate } from '$app/navigation';
 	import ToggleCompact from '$lib/components/ToggleCompact.svelte';
-	import {Icon} from 'svelte-icons-pack';
-	import {TrOutlineCalendarMonth} from 'svelte-icons-pack/tr';
+	import { Icon } from 'svelte-icons-pack';
+	import { TrOutlineCalendarMonth } from 'svelte-icons-pack/tr';
+
 	/**
 	 * Icons for the website
 	 * https://leshak.github.io/svelte-icons-pack/#/pack/tr
 	 * */
 
-	let compact:boolean = false;
-	let checked:boolean; /** Magically comes from ToggleCompact.svelte */
+	let compact: boolean = false;
+	/** Magically comes from ToggleCompact.svelte as I bind it in Component and export from there */
+	let checked: boolean;
 
 
 	onMount(() => {
@@ -21,31 +22,16 @@
 	});
 
 	function toggleView() {
-		/* Fallback if no support for transition */
+		/* Fallback if no support for transition and can do something else */
 		if (!document.startViewTransition) {
-			const savedState = localStorage.getItem('themeCompactState');
-			compact = savedState === 'true';
+			compact = checked;
 			return;
 		}
 
 		document.startViewTransition(() => {
-			const savedState = localStorage.getItem('themeCompactState');
-			compact = savedState === 'true';
+			compact = checked; // this is how I can trigger transition
 		});
-
-		console.log({checked});
 	}
-
-	onNavigate((navigation) => {
-		if (!document.startViewTransition) return;
-
-		return new Promise((resolve) => {
-			document.startViewTransition(async () => {
-				resolve();
-				await navigation.complete;
-			});
-		});
-	});
 </script>
 <h1>Blog <span>tags | tags | tags</span></h1>
 <div>Toggle Compact:
@@ -57,7 +43,9 @@
 		<div class="visual" style="view-transition-name: visual-1">a</div>
 		<div class="content" style="view-transition-content: content-1">
 			<div class="icons" style="view-transition-content: icons-1">
-				<div><Icon src={TrOutlineCalendarMonth} /></div>
+				<div>
+					<Icon src={TrOutlineCalendarMonth} />
+				</div>
 				<div>Read</div>
 				<div>Likes</div>
 			</div>
@@ -181,8 +169,8 @@
     }
   }
 
-	/* Fallback for no JS solution */
-	/* Expanded version */
+  /* Fallback for no JS solution */
+  /* Expanded version */
   :global(.no-js:has(input#toggleCompact[type="checkbox"])) .blog {
     .post {
       flex-direction: row;
@@ -210,7 +198,7 @@
 
     .post {
       flex-direction: row;
-			background: red;
+      background: red;
     }
 
     .visual {
@@ -226,7 +214,7 @@
     .tags {
       display: flex;
     }
-	}
+  }
 
 </style>
 
