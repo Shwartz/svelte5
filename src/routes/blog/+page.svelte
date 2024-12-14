@@ -200,6 +200,15 @@
       flex-direction: row;
     }
 
+    h1 {
+      font-size: 2.25rem;
+			line-height: 2.5rem;
+      margin-top: 0;
+      --fm-ascender: 0.8;
+      --fm-descender: 0.2;
+      --fm-linegap: 0;
+    }
+
     .visual {
       width: 310px;
     }
@@ -209,6 +218,7 @@
       flex-direction: row-reverse;
       width: 100%;
 			gap: 1rem;
+			padding: 0;
     }
 
     .tags {
@@ -220,9 +230,10 @@
       display: flex;
 			flex-direction: column;
       gap: 0.5rem;
-			max-width: 200px;
-			width: 100%;
       align-items: flex-start;
+			width: 100%;
+			max-width: 200px;
+			margin-top: 60px;
 
       > div {
         display: flex;
