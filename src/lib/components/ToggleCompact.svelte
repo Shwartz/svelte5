@@ -1,20 +1,19 @@
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
 	//import { Icon24Cancel } from '@sveltevk/icons';
 
-	let checked = false;
-	let checkedBoolean = 'false';
+	let checked: boolean = false;
 
 	onMount(() => {
 		const savedState = localStorage.getItem('themeCompactState');
-		checkedBoolean = savedState === 'true' ? 'true': 'false';
-		checked = checkedBoolean === 'true';
+		checked = savedState === 'true';
+		console.log('checked isCompact: ', checked);
 	});
 
 	function toggleCompact() {
-		checkedBoolean = (checkedBoolean === 'true') ? 'false': 'true';
-		checked = checkedBoolean === 'true';
-		localStorage.setItem('themeCompactState', checkedBoolean);
+		checked = checked === true;
+		localStorage.setItem('themeCompactState', checked.toString());
+		console.log('checked isCompact: ', checked);
 	}
 </script>
 
