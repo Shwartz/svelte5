@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import ToggleCompact from '$lib/components/ToggleCompact.svelte';
 	import { Icon } from 'svelte-icons-pack';
-	import { TrOutlineCalendarMonth } from 'svelte-icons-pack/tr';
+	import { TrOutlineCalendarMonth, TrOutlineClock, TrOutlineHeart } from 'svelte-icons-pack/tr';
 
 	/**
 	 * Icons for the website
@@ -41,13 +41,20 @@
 <div class="blog" class:compact={compact} class:expanded={!compact}>
 	<section class="post" style="view-transition-name: post-1">
 		<div class="visual" style="view-transition-name: visual-1">a</div>
-		<div class="content" style="view-transition-content: content-1">
-			<div class="icons" style="view-transition-content: icons-1">
+		<div class="content" style="view-transition-name: content-1">
+			<div class="icons" style="view-transition-name: icons-1">
 				<div>
-					<Icon src={TrOutlineCalendarMonth} />
+					<Icon size="16" color="777777" src={TrOutlineCalendarMonth} />
+					<span>December, 2024</span>
 				</div>
-				<div>Read</div>
-				<div>Likes</div>
+				<div>
+					<Icon size="16" color="777777" src={TrOutlineClock} />
+					<span>18 min read</span>
+				</div>
+				<div>
+					<Icon size="16" color="777777" src={TrOutlineHeart} />
+					<span>112 likes</span>
+				</div>
 			</div>
 			<div>
 				<h1>How to create CSS layout using Flexbox</h1>
@@ -65,11 +72,20 @@
 	</section>
 	<section class="post" style="view-transition-name: post-2">
 		<div class="visual" style="view-transition-name: visual-2">a</div>
-		<div class="content" style="view-transition-content: content-2">
-			<div class="icons" style="view-transition-content: icons-2">
-				<div>Time</div>
-				<div>Read</div>
-				<div>Likes</div>
+		<div class="content" style="view-transition-name: content-2">
+			<div class="icons" style="view-transition-name: icons-2">
+				<div>
+					<Icon size="16" color="777777" src={TrOutlineCalendarMonth} />
+					<span>December, 2024</span>
+				</div>
+				<div>
+					<Icon size="16" color="777777" src={TrOutlineClock} />
+					<span>18 min read</span>
+				</div>
+				<div>
+					<Icon size="16" color="777777" src={TrOutlineHeart} />
+					<span>112 likes</span>
+				</div>
 			</div>
 			<div>
 				<h1>How to create CSS layout using Flexbox</h1>
@@ -87,11 +103,20 @@
 	</section>
 	<section class="post" style="view-transition-name: post-3">
 		<div class="visual" style="view-transition-name: visual-3">a</div>
-		<div class="content" style="view-transition-content: content-3">
-			<div class="icons" style="view-transition-content: icons-3">
-				<div>Time</div>
-				<div>Read</div>
-				<div>Likes</div>
+		<div class="content" style="view-transition-name: content-3">
+			<div class="icons" style="view-transition-name: icons-3">
+				<div>
+					<Icon size="16" color="777777" src={TrOutlineCalendarMonth} />
+					<span>December, 2024</span>
+				</div>
+				<div>
+					<Icon size="16" color="777777" src={TrOutlineClock} />
+					<span>18 min read</span>
+				</div>
+				<div>
+					<Icon size="16" color="777777" src={TrOutlineHeart} />
+					<span>112 likes</span>
+				</div>
 			</div>
 			<div>
 				<h1>How to create CSS layout using Flexbox</h1>
@@ -114,6 +139,7 @@
     background: white;
   }
 
+	/* General styles, Expand as default */
   .post {
     display: flex;
     gap: 1.5rem;
@@ -143,10 +169,30 @@
     width: 50%;
   }
 
+  /* Icons */
+  .icons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
+
+      span {
+        display: block;
+      }
+    }
+  }
+
+  /* EXPANDED */
   .blog.expanded {
     background: #deb195;
   }
 
+	/* COMPACT */
   .blog.compact {
     background: #95de95;
 
@@ -162,10 +208,33 @@
       display: flex;
       flex-direction: row-reverse;
       width: 100%;
+			gap: 1rem;
     }
 
     .tags {
       display: flex;
+    }
+
+    /* Icons */
+    .icons {
+      display: flex;
+			flex-direction: column;
+      gap: 0.5rem;
+			max-width: 200px;
+			width: 100%;
+      align-items: flex-start;
+
+      > div {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 14px;
+
+        span {
+          display: block;
+					text-wrap: nowrap;
+        }
+      }
     }
   }
 
@@ -198,7 +267,7 @@
 
     .post {
       flex-direction: row;
-      background: red;
+      background: #3a3a3a;
     }
 
     .visual {
@@ -215,6 +284,5 @@
       display: flex;
     }
   }
-
 </style>
 
