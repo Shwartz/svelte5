@@ -8,6 +8,7 @@
 	onMount(() => {
 		const savedState = localStorage.getItem('themeCompactState');
 		checkedBoolean = savedState === 'true' ? 'true': 'false';
+		checked = checkedBoolean === 'true';
 	});
 
 	function toggleCompact() {
