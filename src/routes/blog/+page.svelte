@@ -3,6 +3,7 @@
 	import ToggleCompact from '$lib/components/ToggleCompact.svelte';
 	import { Icon } from 'svelte-icons-pack';
 	import { TrOutlineCalendarMonth, TrOutlineClock, TrOutlineHeart } from 'svelte-icons-pack/tr';
+	import Tag from '$lib/components/snippets/Tag.svelte';
 
 	/**
 	 * Icons for the website
@@ -63,9 +64,10 @@
 					rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
 					understand the mechanics behind the layout.</p>
 				<div class="tags">
-					<div>Tag</div>
-					<div>Tag</div>
-					<div>Tag</div>
+					<Tag blogCategory="JavaScript" />
+					<Tag blogCategory="CSS" />
+					<Tag blogCategory="Random" />
+					<Tag blogCategory="Design" />
 				</div>
 			</div>
 		</div>
@@ -94,9 +96,8 @@
 					rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
 					understand the mechanics behind the layout.</p>
 				<div class="tags">
-					<div>Tag</div>
-					<div>Tag</div>
-					<div>Tag</div>
+					<Tag blogCategory="Random" />
+					<Tag blogCategory="Design" />
 				</div>
 			</div>
 		</div>
@@ -125,9 +126,10 @@
 					rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
 					understand the mechanics behind the layout.</p>
 				<div class="tags">
-					<div>Tag</div>
-					<div>Tag</div>
-					<div>Tag</div>
+					<Tag blogCategory="Tools" />
+					<Tag blogCategory="CSS" />
+					<Tag blogCategory="Random" />
+					<Tag blogCategory="Design" />
 				</div>
 			</div>
 		</div>
@@ -139,7 +141,7 @@
     background: white;
   }
 
-	/* General styles, Expand as default */
+	/* EXPANDED: General styles, Expand as default */
   .post {
     display: flex;
     gap: 1.5rem;
@@ -187,7 +189,13 @@
     }
   }
 
-  /* EXPANDED */
+	.tags {
+    margin-top: 1rem;
+		display: flex;
+		gap: 0.5rem;
+	}
+
+  /* EXPANDED specific styles */
   .blog.expanded {
     background: #deb195;
   }

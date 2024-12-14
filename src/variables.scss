@@ -1,7 +1,15 @@
 :root {
   /** colors */
   --clr-white: white;
+  --lime: lime;
   --_sudo-private-property-example: red;
+
+  --pastel-green: #D6F1BB;
+  --pastel-orange: #FFD79F;
+  --pastel-yellow: #FCF3A4;
+  --pastel-violet: #CCDFFD;
+  --pastel-red: #FFC9C9;
+
   /** fonts */
   --ff-base: "Serif";
   /** fonts */
@@ -10,8 +18,32 @@
   --ff-family: Blanco,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
   /** spaces */
 
-
   --primary-text-color: red;
 }
 
 $base-color: #c6538c;
+
+
+/*
+font metrics
+https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align
+example:
+p {
+    //// font metrics
+--font: Catamaran;
+--fm-capitalHeight: 0.68;
+--fm-descender: 0.54;
+--fm-ascender: 1.1;
+--fm-linegap: 0;
+
+//// desired font-size for capital height
+--capital-height: 100;
+
+//// apply font-family
+font-family: var(--font);
+
+///compute font-size to get capital height equal desired font-size
+--computedFontSize: (var(--capital-height) / var(--fm-capitalHeight));
+font-size: calc(var(--computedFontSize) * 1px);
+}
+*/
