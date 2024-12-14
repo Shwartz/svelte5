@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	//import { Icon24Cancel } from '@sveltevk/icons';
 
-	let checked: boolean = false;
+	export let checked: boolean = false;
 
 	onMount(() => {
 		const savedState = localStorage.getItem('themeCompactState');

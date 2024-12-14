@@ -2,19 +2,16 @@
 	import { onMount } from 'svelte';
 	import { onNavigate } from '$app/navigation';
 	import ToggleCompact from '$lib/components/ToggleCompact.svelte';
+	import {Icon} from 'svelte-icons-pack';
+	import {TrOutlineCalendarMonth} from 'svelte-icons-pack/tr';
+	/**
+	 * Icons for the website
+	 * https://leshak.github.io/svelte-icons-pack/#/pack/tr
+	 * */
 
-	let compact = false;
+	let compact:boolean = false;
+	let checked:boolean; /** Magically comes from ToggleCompact.svelte */
 
-	function toggleView() {
-		if (!document.startViewTransition) {
-			compact = compact !== true;
-			return;
-		}
-
-		document.startViewTransition(() => {
-			compact = compact !== true;
-		});
-	}
 
 	onMount(() => {
 		const checkbox = document.getElementById('toggleCompact') as HTMLInputElement;
@@ -22,6 +19,22 @@
 		const savedState = localStorage.getItem('themeCompactState');
 		compact = savedState === 'true';
 	});
+
+	function toggleView() {
+		/* Fallback if no support for transition */
+		if (!document.startViewTransition) {
+			const savedState = localStorage.getItem('themeCompactState');
+			compact = savedState === 'true';
+			return;
+		}
+
+		document.startViewTransition(() => {
+			const savedState = localStorage.getItem('themeCompactState');
+			compact = savedState === 'true';
+		});
+
+		console.log({checked});
+	}
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
@@ -36,7 +49,7 @@
 </script>
 <h1>Blog <span>tags | tags | tags</span></h1>
 <div>Toggle Compact:
-	<ToggleCompact bind:checked={compact} />
+	<ToggleCompact bind:checked />
 </div>
 
 <div class="blog" class:compact={compact} class:expanded={!compact}>
@@ -44,7 +57,7 @@
 		<div class="visual" style="view-transition-name: visual-1">a</div>
 		<div class="content" style="view-transition-content: content-1">
 			<div class="icons" style="view-transition-content: icons-1">
-				<div>Time</div>
+				<div><Icon src={TrOutlineCalendarMonth} /></div>
 				<div>Read</div>
 				<div>Likes</div>
 			</div>
