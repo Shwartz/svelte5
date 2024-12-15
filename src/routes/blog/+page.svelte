@@ -78,23 +78,21 @@
 			<div class="icons" style="view-transition-name: icons-2">
 				<div>
 					<Icon size="16" color="777777" src={TrOutlineCalendarMonth} />
-					<span>December, 2024</span>
+					<span>June, 2023</span>
 				</div>
 				<div>
 					<Icon size="16" color="777777" src={TrOutlineClock} />
-					<span>18 min read</span>
+					<span>5 min read</span>
 				</div>
 				<div>
 					<Icon size="16" color="777777" src={TrOutlineHeart} />
-					<span>112 likes</span>
+					<span>1 likes</span>
 				</div>
 			</div>
 			<div>
-				<h1>How to create CSS layout using Flexbox</h1>
-				<p>So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should
-					you
-					rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
-					understand the mechanics behind the layout.</p>
+				<h1>2D and 3D animations with CSS</h1>
+				<p>2D and 3D animations provide developers with tools to manipulate an element on the screen, including
+					position, size, perspective and rotation.</p>
 				<div class="tags">
 					<Tag blogCategory="Random" />
 					<Tag blogCategory="Design" />
@@ -108,23 +106,22 @@
 			<div class="icons" style="view-transition-name: icons-3">
 				<div>
 					<Icon size="16" color="777777" src={TrOutlineCalendarMonth} />
-					<span>December, 2024</span>
+					<span>February, 2022</span>
 				</div>
 				<div>
 					<Icon size="16" color="777777" src={TrOutlineClock} />
-					<span>18 min read</span>
+					<span>11 min read</span>
 				</div>
 				<div>
 					<Icon size="16" color="777777" src={TrOutlineHeart} />
-					<span>112 likes</span>
+					<span>888 likes</span>
 				</div>
 			</div>
 			<div>
-				<h1>How to create CSS layout using Flexbox</h1>
-				<p>So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should
-					you
-					rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
-					understand the mechanics behind the layout.</p>
+				<h1>How to deal with CSS</h1>
+				<p>The common pitfalls with CSS and different approaches to make sense of the project's design, front-end and
+					maintenance. This is a more philosophical post where I overview my experience dealing with CSS and to find the
+					best approach (methodology) for the project.</p>
 				<div class="tags">
 					<Tag blogCategory="Tools" />
 					<Tag blogCategory="CSS" />
@@ -141,7 +138,7 @@
     background: white;
   }
 
-	/* EXPANDED: General styles, Expand as default */
+  /* EXPANDED: General styles, Expand as default */
   .post {
     display: flex;
     gap: 1.5rem;
@@ -189,18 +186,18 @@
     }
   }
 
-	.tags {
+  .tags {
     margin-top: 1rem;
-		display: flex;
-		gap: 0.5rem;
-	}
+    display: flex;
+    gap: 0.5rem;
+  }
 
   /* EXPANDED specific styles */
   .blog.expanded {
     background: #deb195;
   }
 
-	/* COMPACT */
+  /* COMPACT */
   .blog.compact {
     background: #95de95;
 
@@ -210,7 +207,7 @@
 
     h1 {
       font-size: 2.25rem;
-			line-height: 2.5rem;
+      line-height: 2.5rem;
       margin-top: 0;
       --fm-ascender: 0.8;
       --fm-descender: 0.2;
@@ -225,8 +222,8 @@
       display: flex;
       flex-direction: row-reverse;
       width: 100%;
-			gap: 1rem;
-			padding: 0;
+      gap: 1rem;
+      padding: 0;
     }
 
     .tags {
@@ -236,12 +233,11 @@
     /* Icons */
     .icons {
       display: flex;
-			flex-direction: column;
-      gap: 0.5rem;
+      flex-direction: column;
       align-items: flex-start;
-			width: 100%;
-			max-width: 200px;
-			margin-top: 60px;
+      gap: 0.5rem;
+      flex: 0 0 160px;
+      justify-content: center;
 
       > div {
         display: flex;
@@ -251,7 +247,7 @@
 
         span {
           display: block;
-					text-wrap: nowrap;
+          text-wrap: nowrap;
         }
       }
     }
