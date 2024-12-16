@@ -4,6 +4,7 @@
 	import { Icon } from 'svelte-icons-pack';
 	import { TrOutlineCalendarMonth, TrOutlineClock, TrOutlineHeart } from 'svelte-icons-pack/tr';
 	import Tag from '$lib/components/snippets/Tag.svelte';
+	import FlexImg from '/src/assets/svg/flexBox.svg?component';
 
 	/**
 	 * Icons for the website
@@ -41,7 +42,9 @@
 
 <div class="blog" class:compact={compact} class:expanded={!compact}>
 	<section class="post" style="view-transition-name: post-1">
-		<div class="visual" style="view-transition-name: visual-1">a</div>
+		<div class="visual" style="view-transition-name: visual-1">
+			<FlexImg className="test" />
+		</div>
 		<div class="content" style="view-transition-name: content-1">
 			<div class="icons" style="view-transition-name: icons-1">
 				<div>
@@ -59,7 +62,7 @@
 			</div>
 			<div>
 				<h1>How to create CSS layout using Flexbox</h1>
-				<p>So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should
+				<p>What to <b>click</b>, <b>hover</b> effects to go for a full article? So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should
 					you
 					rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
 					understand the mechanics behind the layout.</p>
@@ -299,5 +302,37 @@
       display: flex;
     }
   }
+
+	/* SVG styling */
+	/*.visual {
+    color: green;
+    !*filter: blur(2px);*!
+    stroke-width: 5px;
+    !*stroke: red;*!
+    fill: green;
+
+    &:nth-child(1) {
+      !*color: green;
+      !*filter: blur(2px);*!
+      stroke-width: 5px;
+      !*stroke: red;*!
+      fill: green;*!
+
+
+    }*/
+
+
+  :global(.svgBox .path1) {
+    fill: blue;
+    stroke: purple;
+    stroke-width: 5px;
+    /*filter: blur(2px);*/
+  }
+
+  :global(.svgBox .path2) {
+    transform: rotate3d(1, 1, 1, -0.2);
+    /*filter: blur(2px);*/
+  }
+
 </style>
 
