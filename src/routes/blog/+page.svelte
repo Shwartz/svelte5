@@ -60,18 +60,17 @@
 					<span>112 likes</span>
 				</div>
 			</div>
-			<div>
-				<h1>How to create CSS layout using Flexbox</h1>
-				<p>What to <b>click</b>, <b>hover</b> effects to go for a full article? So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should
-					you
-					rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
-					understand the mechanics behind the layout.</p>
-				<div class="tags">
-					<Tag blogCategory="JavaScript" />
-					<Tag blogCategory="CSS" />
-					<Tag blogCategory="Random" />
-					<Tag blogCategory="Design" />
-				</div>
+			<h1 class="title">How to create CSS layout using Flexbox</h1>
+			<p class="intro">
+				>What to <b>click</b>, <b>hover</b> effects to go for a full article? So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should
+				you
+				rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
+				understand the mechanics behind the layout.</p>
+			<div class="tags">
+				<Tag blogCategory="JavaScript" />
+				<Tag blogCategory="CSS" />
+				<Tag blogCategory="Random" />
+				<Tag blogCategory="Design" />
 			</div>
 		</div>
 	</section>
@@ -92,16 +91,14 @@
 					<span>1 likes</span>
 				</div>
 			</div>
-			<div>
-				<h1>2D and 3D animations with CSS</h1>
-				<p>2D and 3D animations provide developers with tools to manipulate an element on the screen, including
+				<h1 class="title">2D and 3D animations with CSS</h1>
+				<p class="intro">2D and 3D animations provide developers with tools to manipulate an element on the screen, including
 					position, size, perspective and rotation.</p>
 				<div class="tags">
 					<Tag blogCategory="Random" />
 					<Tag blogCategory="Design" />
 				</div>
 			</div>
-		</div>
 	</section>
 	<section class="post" style="view-transition-name: post-3">
 		<div class="visual" style="view-transition-name: visual-3">a</div>
@@ -120,9 +117,8 @@
 					<span>888 likes</span>
 				</div>
 			</div>
-			<div>
-				<h1>How to deal with CSS</h1>
-				<p>The common pitfalls with CSS and different approaches to make sense of the project's design, front-end and
+				<h1 class="title">How to deal with CSS</h1>
+				<p class="intro">The common pitfalls with CSS and different approaches to make sense of the project's design, front-end and
 					maintenance. This is a more philosophical post where I overview my experience dealing with CSS and to find the
 					best approach (methodology) for the project.</p>
 				<div class="tags">
@@ -132,7 +128,6 @@
 					<Tag blogCategory="Design" />
 				</div>
 			</div>
-		</div>
 	</section>
 </div>
 
@@ -169,6 +164,37 @@
   .content {
     padding: 1.5rem 0;
     width: 50%;
+
+		h1, p {
+			margin: 0;
+		}
+  }
+
+  .content {
+    display: grid;
+		align-items: start;
+		width: 50%;
+    grid-template-areas:
+			'a'
+			'b'
+			'c'
+			'd';
+  }
+
+	.icons {
+		grid-area: a;
+	}
+
+  .title {
+    grid-area: b;
+  }
+
+  .intro {
+    grid-area: c;
+  }
+
+  .tags {
+    grid-area: d;
   }
 
   /* Icons */
@@ -203,6 +229,15 @@
   /* COMPACT */
   .blog.compact {
     background: #95de95;
+    .content {
+			width: 100%;
+      display: grid;
+			gap: 1.5rem;
+      grid-template-areas:
+			"b b"
+			"c a"
+			"d d";
+    }
 
     .post {
       flex-direction: row;
@@ -221,14 +256,6 @@
       width: 310px;
     }
 
-    .content {
-      display: flex;
-      flex-direction: row-reverse;
-      width: 100%;
-      gap: 1rem;
-      padding: 0;
-    }
-
     .tags {
       display: flex;
     }
@@ -241,6 +268,7 @@
       gap: 0.5rem;
       flex: 0 0 160px;
       justify-content: center;
+			width: 9rem;
 
       > div {
         display: flex;
