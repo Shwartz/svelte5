@@ -42,7 +42,7 @@
 
 <div class="blog" class:compact={compact} class:expanded={!compact}>
 	<section class="post" style="view-transition-name: post-1">
-		<div class="visual" style="view-transition-name: visual-1">
+		<div class="visual flexBoxSvg" style="view-transition-name: visual-1">
 			<FlexImg className="test" />
 		</div>
 		<div class="content" style="view-transition-name: content-1">
@@ -61,11 +61,11 @@
 				</div>
 			</div>
 			<h1 class="title">How to create CSS layout using Flexbox</h1>
-			<p class="intro">
-				>What to <b>click</b>, <b>hover</b> effects to go for a full article? So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should
-				you
-				rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
-				understand the mechanics behind the layout.</p>
+			<p class="intro truncate">
+				What to <b>click</b>, <b>hover</b> effects to go for a full article? So, you have your first mockup or design in
+				your hands, but how do you translate it to HTML and CSS? Should
+				you rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you
+				to understand the mechanics behind the layout.</p>
 			<div class="tags">
 				<Tag blogCategory="JavaScript" />
 				<Tag blogCategory="CSS" />
@@ -91,14 +91,13 @@
 					<span>1 likes</span>
 				</div>
 			</div>
-				<h1 class="title">2D and 3D animations with CSS</h1>
-				<p class="intro">2D and 3D animations provide developers with tools to manipulate an element on the screen, including
-					position, size, perspective and rotation.</p>
-				<div class="tags">
-					<Tag blogCategory="Random" />
-					<Tag blogCategory="Design" />
-				</div>
+			<h1 class="title">2D and 3D animations with CSS</h1>
+			<p class="intro truncate">Short description</p>
+			<div class="tags">
+				<Tag blogCategory="Random" />
+				<Tag blogCategory="Design" />
 			</div>
+		</div>
 	</section>
 	<section class="post" style="view-transition-name: post-3">
 		<div class="visual" style="view-transition-name: visual-3">a</div>
@@ -117,23 +116,28 @@
 					<span>888 likes</span>
 				</div>
 			</div>
-				<h1 class="title">How to deal with CSS</h1>
-				<p class="intro">The common pitfalls with CSS and different approaches to make sense of the project's design, front-end and
-					maintenance. This is a more philosophical post where I overview my experience dealing with CSS and to find the
-					best approach (methodology) for the project.</p>
-				<div class="tags">
-					<Tag blogCategory="Tools" />
-					<Tag blogCategory="CSS" />
-					<Tag blogCategory="Random" />
-					<Tag blogCategory="Design" />
-				</div>
+			<h1 class="title">How to deal with CSS</h1>
+			<p class="intro truncate">The common pitfalls with CSS and different approaches to make sense of the project's design,
+				front-end and
+				maintenance. This is a more philosophical post where I overview my experience dealing with CSS and to find the
+				best approach (methodology) for the project.</p>
+			<div class="tags">
+				<Tag blogCategory="Tools" />
+				<Tag blogCategory="CSS" />
+				<Tag blogCategory="Random" />
+				<Tag blogCategory="Design" />
 			</div>
+		</div>
 	</section>
 </div>
 
 <style lang="scss">
   .blog {
     background: white;
+  }
+
+  section {
+    transition: all 0.3s;
   }
 
   /* EXPANDED: General styles, Expand as default */
@@ -165,15 +169,15 @@
     padding: 1.5rem 0;
     width: 50%;
 
-		h1, p {
-			margin: 0;
-		}
+    h1, p {
+      margin: 0;
+    }
   }
 
   .content {
     display: grid;
-		align-items: start;
-		width: 50%;
+    align-items: start;
+    width: 50%;
     grid-template-areas:
 			'a'
 			'b'
@@ -181,9 +185,9 @@
 			'd';
   }
 
-	.icons {
-		grid-area: a;
-	}
+  .icons {
+    grid-area: a;
+  }
 
   .title {
     grid-area: b;
@@ -223,16 +227,15 @@
 
   /* EXPANDED specific styles */
   .blog.expanded {
-    background: #deb195;
   }
 
   /* COMPACT */
   .blog.compact {
-    background: #95de95;
     .content {
-			width: 100%;
+      width: 100%;
       display: grid;
-			gap: 1.5rem;
+      gap: 0.5rem;
+      grid-template-columns: 1fr auto;
       grid-template-areas:
 			"b b"
 			"c a"
@@ -247,17 +250,21 @@
       font-size: 2.25rem;
       line-height: 2.5rem;
       margin-top: 0;
-      --fm-ascender: 0.8;
-      --fm-descender: 0.2;
-      --fm-linegap: 0;
     }
 
     .visual {
+      align-self: center;
       width: 310px;
+      height: 100%;
     }
 
     .tags {
       display: flex;
+      margin-top: 0;
+    }
+
+    .intro {
+      width: 100%;
     }
 
     /* Icons */
@@ -265,10 +272,10 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.5rem;
+      gap: 0.2rem;
       flex: 0 0 160px;
       justify-content: center;
-			width: 9rem;
+      width: 9rem;
 
       > div {
         display: flex;
@@ -331,36 +338,49 @@
     }
   }
 
-	/* SVG styling */
-	/*.visual {
-    color: green;
-    !*filter: blur(2px);*!
-    stroke-width: 5px;
-    !*stroke: red;*!
-    fill: green;
+  /* SVG styling */
+  /*.visual {
+		color: green;
+		!*filter: blur(2px);*!
+		stroke-width: 5px;
+		!*stroke: red;*!
+		fill: green;
 
-    &:nth-child(1) {
-      !*color: green;
-      !*filter: blur(2px);*!
-      stroke-width: 5px;
-      !*stroke: red;*!
-      fill: green;*!
-
-
-    }*/
+		&:nth-child(1) {
+			!*color: green;
+			!*filter: blur(2px);*!
+			stroke-width: 5px;
+			!*stroke: red;*!
+			fill: green;*!
 
 
-  :global(.svgBox .path1) {
-    fill: blue;
-    stroke: purple;
-    stroke-width: 5px;
-    /*filter: blur(2px);*/
+		}*/
+
+  .flexBoxSvg :global(.path1) {
+    /*fill: #8a8ac2;*/
+    /*stroke: purple;
+    stroke-width: 1px;*/
   }
 
-  :global(.svgBox .path2) {
-    transform: rotate3d(1, 1, 1, -0.2);
-    /*filter: blur(2px);*/
+  .flexBoxSvg :global(.path2) {
+    filter: blur(2px);
+    transform: rotate3d(12, 1, 1, -83deg);
+    opacity: 0;
+    transition: all 0.5s;
   }
 
+  section:hover .flexBoxSvg :global(.path2) {
+    transform: rotate3d(1, 1, 1, 0);
+    filter: blur(0px);
+    opacity: 1;
+  }
+
+  .truncate {
+    display: -webkit-box; /* Enables the use of the line-clamp property */
+    -webkit-line-clamp: 3; /* Specifies the number of lines to display */
+    -webkit-box-orient: vertical; /* Defines the box orientation as vertical */
+    overflow: hidden; /* Hides overflowing content */
+    text-overflow: ellipsis; /* Adds an ellipsis (...) to truncated content */
+  }
 </style>
 

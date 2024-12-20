@@ -21,7 +21,7 @@
 	<input id="toggleCompact" type="checkbox" bind:checked on:change={toggleCompact} />
 	<div class="icon-wrapper">
 		<!--<Icon24Cancel />-->
-		<p>ICON</p>
+		<span>Icon</span>
 	</div>
 </label>
 
@@ -39,6 +39,17 @@
         padding: 5px;
         border-radius: 50%;
         transition: background-color 0.3s ease;
+    }
+
+    input[type="checkbox"] + .icon-wrapper {
+				display: flex;
+
+				align-items: center;
+				justify-content: center;
+				font-size: 10px;
+				background-color: red;
+				height: 2rem;
+				width: 2rem;
     }
 
     input[type="checkbox"]:checked + .icon-wrapper {
