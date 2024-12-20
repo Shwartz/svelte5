@@ -1,4 +1,5 @@
 <script lang="ts">
+	export const prerender = true
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import '../app.scss';
