@@ -4,6 +4,8 @@
 	import { Icon } from 'svelte-icons-pack';
 	import { TrOutlineCalendarMonth, TrOutlineClock, TrOutlineHeart } from 'svelte-icons-pack/tr';
 	import Tag from '$lib/components/snippets/Tag.svelte';
+	import PostList from '$lib/blog/logic/PostList.svelte';
+	import { postsArr } from '$lib/blog/logic/postsConfig';
 	import FlexImg from '/src/assets/svg/flexBox.svg?component';
 
 	/**
@@ -14,6 +16,13 @@
 	let compact: boolean = false;
 	/** Magically comes from ToggleCompact.svelte as I bind it in Component and export from there */
 	let checked: boolean;
+
+	// Get unique tags from all posts
+	const allTags = [...new Set(postsArr.flatMap(post => post.tags))];
+	let selectedFilter: string | null = null;
+	function handleFilterClick(tag: string) {
+		selectedFilter = selectedFilter === tag ? null : tag;
+	}
 
 
 	onMount(() => {
@@ -38,13 +47,19 @@
 <h1>Blog</h1>
 <div class="headerTags">
 	<div>
-		<Tag blogCategory="JavaScript" />
-		<Tag blogCategory="CSS" />
-		<Tag blogCategory="Random" />
-		<Tag blogCategory="Design" />
+		{#each allTags as tag}
+			<button
+				on:click={() => handleFilterClick(tag)}
+				class:active={selectedFilter === tag}
+			>
+				<Tag blogCategory={tag} />
+			</button>
+		{/each}
 	</div>
 	<ToggleCompact bind:checked />
 </div>
+
+<PostList {selectedFilter} />
 
 <div class="blog" class:compact={compact} class:expanded={!compact}>
 	<section class="post" style="view-transition-name: post-1">
@@ -123,7 +138,8 @@
 				</div>
 			</div>
 			<h1 class="title">How to deal with CSS</h1>
-			<p class="intro truncate">The common pitfalls with CSS and different approaches to make sense of the project's design,
+			<p class="intro truncate">The common pitfalls with CSS and different approaches to make sense of the project's
+				design,
 				front-end and
 				maintenance. This is a more philosophical post where I overview my experience dealing with CSS and to find the
 				best approach (methodology) for the project.</p>
@@ -146,10 +162,10 @@
     transition: all 0.3s;
   }
 
-	.headerTags {
-		display: flex;
-		justify-content: space-between;
-	}
+  .headerTags {
+    display: flex;
+    justify-content: space-between;
+  }
 
   /* EXPANDED: General styles, Expand as default */
   .post {
@@ -265,7 +281,7 @@
 
     .visual {
       align-self: center;
-			flex: 0 0 310px;
+      flex: 0 0 310px;
     }
 
     .tags {
