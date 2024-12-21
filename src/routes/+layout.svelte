@@ -25,7 +25,7 @@
 		<header>
 			<nav>
 				<a href="{base}/">Andris Švarcs</a>
-				<a href="{base}/blog">Blog</a>
+				<a href="{base}/thoughts">Blog</a>
 				<a href="{base}/news-archive">News archive</a>
 			</nav>
 			<div>

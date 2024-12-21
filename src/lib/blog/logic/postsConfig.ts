@@ -1,3 +1,7 @@
+import FlexImg from '$lib/blog/heroSvg/ImgPost1.svelte';
+import {base} from "$app/paths";
+
+
 export const postsArr = [
 	{
 		url: '/url1',
@@ -7,14 +11,18 @@ export const postsArr = [
 		publishedDate: 'December, 2024',
 		readingTime: '10 min read',
 		likes: '54 likes',
+		Visual: FlexImg
 	},
 	{
-		url: '/url2',
-		title: 'Post 2',
-		description: 'Some description here 2',
-		tags: ['Design', 'CSS'],
-		publishedDate: 'May, 2024',
+		url: `${base}/thoughts/svelte-vs-reactjs`,
+		title: 'Svelte vs ReactJS',
+		description: 'The Svelte vs React argument is straightforward when the project requirements are clearly defined.',
+		tags: ['JavaScript'],
+		publishedDate: 'September, 2022',
 		readingTime: '18 min read',
-		likes: '112 likes'
-	},
-]
+		likes: '112 likes',
+		Visual: FlexImg
+	}
+];
+
+

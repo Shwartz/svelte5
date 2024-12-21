@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { postsArr } from '$lib/blog/logic/postsConfig';
 	import { TrOutlineCalendarMonth, TrOutlineClock, TrOutlineHeart } from 'svelte-icons-pack/tr';
-	import { Icon } from 'svelte-icons-pack';
 	import Tag from '$lib/components/snippets/Tag.svelte';
-	//import FlexImg from '/src/assets/svg/flexBox.svg?component';
+	import { Icon } from 'svelte-icons-pack';
 
 	// This is how I get props in child <PostList {selectedFilter />
 	export let selectedFilter: string | null = null;
@@ -15,11 +14,10 @@
 </script>
 
 <div class="blog" class:compact={compact} class:expanded={!compact}>
-	{#each filteredPosts as {url, title, description, tags, publishedDate, readingTime, likes}, index}
+	{#each filteredPosts as {url, title, description, tags, publishedDate, readingTime, likes, Visual}, index}
 		<section class="post" style="view-transition-name: post-{index}">
-			<div class="visual flexBoxSvg" style="view-transition-name: visual-{index}">
-				<!--<FlexImg className="test" />-->
-				<p>SVG</p>
+			<div class="visual" style="view-transition-name: visual-{index}">
+				<Visual />
 			</div>
 			<div class="content" style="view-transition-name: content-{index}">
 				<div class="icons" style="view-transition-name: icons-{index}">
@@ -255,43 +253,6 @@
     .tags {
       display: flex;
     }
-  }
-
-  /* SVG styling */
-  /*.visual {
-		color: green;
-		!*filter: blur(2px);*!
-		stroke-width: 5px;
-		!*stroke: red;*!
-		fill: green;
-
-		&:nth-child(1) {
-			!*color: green;
-			!*filter: blur(2px);*!
-			stroke-width: 5px;
-			!*stroke: red;*!
-			fill: green;*!
-
-
-		}*/
-
-  .flexBoxSvg :global(.path1) {
-    /*fill: #8a8ac2;*/
-    /*stroke: purple;
-    stroke-width: 1px;*/
-  }
-
-  .flexBoxSvg :global(.path2) {
-    filter: blur(2px);
-    transform: rotate3d(12, 1, 1, -83deg);
-    opacity: 0;
-    transition: all 0.5s;
-  }
-
-  section:hover .flexBoxSvg :global(.path2) {
-    transform: rotate3d(1, 1, 1, 0);
-    filter: blur(0px);
-    opacity: 1;
   }
 
   .truncate {
