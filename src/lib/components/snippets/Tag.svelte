@@ -1,18 +1,21 @@
-<script lang="ts">
-	const predefinedCategories = {
+<script lang="ts" context="module">
+	export const predefinedCategories = {
 		JavaScript: 'var(--pastel-green)',
 		CSS: 'var(--pastel-orange)',
 		Tools: 'var(--pastel-yellow)',
 		Design: 'var(--pastel-violet)',
 		Random: 'var(--pastel-red)',
-	};
+	} as const;
 
-	type cats = keyof typeof predefinedCategories;
-
-	export let blogCategory: cats = 'JavaScript';
+	export type cats = keyof typeof predefinedCategories;
 </script>
 
-<span class="tag" style:background-color={predefinedCategories[blogCategory]}>
+<script lang="ts">
+  export let blogCategory: cats = 'JavaScript';
+  export let active:boolean;
+</script>
+
+<span class="tag" class:active style:background-color={predefinedCategories[blogCategory]}>
   <slot>{blogCategory}</slot>
 </span>
 
@@ -23,5 +26,9 @@
         border-radius: 1em;
         color: black;
         font-size: 0.75rem;
+    }
+
+    .active {
+      outline: 1px solid red;
     }
 </style>

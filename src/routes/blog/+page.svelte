@@ -3,7 +3,7 @@
 	import ToggleCompact from '$lib/components/ToggleCompact.svelte';
 	import { Icon } from 'svelte-icons-pack';
 	import { TrOutlineCalendarMonth, TrOutlineClock, TrOutlineHeart } from 'svelte-icons-pack/tr';
-	import Tag from '$lib/components/snippets/Tag.svelte';
+	import Tag, {type cats} from '$lib/components/snippets/Tag.svelte';
 	import PostList from '$lib/blog/logic/PostList.svelte';
 	import { postsArr } from '$lib/blog/logic/postsConfig';
 	import FlexImg from '/src/assets/svg/flexBox.svg?component';
@@ -17,10 +17,10 @@
 	/** Magically comes from ToggleCompact.svelte as I bind it in Component and export from there */
 	let checked: boolean;
 
-	// Get unique tags from all posts
-	const allTags = [...new Set(postsArr.flatMap(post => post.tags))];
-	let selectedFilter: string | null = null;
-	function handleFilterClick(tag: string) {
+	// Get unique tags from all posts and asset them as cats type
+	const allTags = [...new Set(postsArr.flatMap(post => post.tags))] as cats[];
+	let selectedFilter: cats | null = null;
+	function handleFilterClick(tag: cats) {
 		selectedFilter = selectedFilter === tag ? null : tag;
 	}
 
@@ -46,13 +46,13 @@
 </script>
 <h1>Blog</h1>
 <div class="headerTags">
-	<div>
+	<div class="filter">
 		{#each allTags as tag}
 			<button
 				on:click={() => handleFilterClick(tag)}
-				class:active={selectedFilter === tag}
+				class="btnTag"
 			>
-				<Tag blogCategory={tag} />
+				<Tag active={selectedFilter === tag} blogCategory={tag} />
 			</button>
 		{/each}
 	</div>
@@ -166,6 +166,19 @@
     display: flex;
     justify-content: space-between;
   }
+
+	.btnTag {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+	}
+
+	.filter {
+		display: flex;
+		gap: 4px;
+	}
 
   /* EXPANDED: General styles, Expand as default */
   .post {
