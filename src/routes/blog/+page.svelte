@@ -35,8 +35,14 @@
 		});
 	}
 </script>
-<h1>Blog <span>tags | tags | tags</span></h1>
-<div>Toggle Compact:
+<h1>Blog</h1>
+<div class="headerTags">
+	<div>
+		<Tag blogCategory="JavaScript" />
+		<Tag blogCategory="CSS" />
+		<Tag blogCategory="Random" />
+		<Tag blogCategory="Design" />
+	</div>
 	<ToggleCompact bind:checked />
 </div>
 
@@ -139,6 +145,11 @@
   section {
     transition: all 0.3s;
   }
+
+	.headerTags {
+		display: flex;
+		justify-content: space-between;
+	}
 
   /* EXPANDED: General styles, Expand as default */
   .post {

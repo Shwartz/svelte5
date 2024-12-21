@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	//import { Icon24Cancel } from '@sveltevk/icons';
+	import { TrOutlineArrowsDiagonal } from 'svelte-icons-pack/tr';
+	import { Icon } from 'svelte-icons-pack';
 
 	export let checked: boolean = false;
 
@@ -19,14 +20,23 @@
 
 <label for="toggleCompact" class="theme-toggle">
 	<input id="toggleCompact" type="checkbox" bind:checked on:change={toggleCompact} />
-	<div class="icon-wrapper">
-		<!--<Icon24Cancel />-->
-		<span>Icon</span>
-	</div>
+	<span class="magic"><Icon size="12" color="000000" src={TrOutlineArrowsDiagonal} /></span>
+	<span class="comfortable">comfortable</span>&nbsp;/&nbsp;
+	<span class="compact">compact</span>
 </label>
 
 <style>
+		.magic {
+        outline: 1px solid #000;
+        color: rgb(0, 0, 0);
+        border-radius: 2px;
+        outline-offset: 1px;
+        margin-right: 4px;
+		}
     .theme-toggle {
+				display: flex;
+				align-items: center;
+				gap: 2px;
         cursor: pointer;
     }
 
@@ -34,26 +44,14 @@
         display: none;
     }
 
-    .icon-wrapper {
-        display: inline-block;
-        padding: 5px;
-        border-radius: 50%;
-        transition: background-color 0.3s ease;
-    }
+		/* Checkbox false */
+		.theme-toggle:has(input[type="checkbox"]:not(:checked)) .comfortable {
+				font-weight: bold;
+		}
 
-    input[type="checkbox"] + .icon-wrapper {
-				display: flex;
-
-				align-items: center;
-				justify-content: center;
-				font-size: 10px;
-				background-color: red;
-				height: 2rem;
-				width: 2rem;
-    }
-
-    input[type="checkbox"]:checked + .icon-wrapper {
-        background-color: #4CAF50;
+    /* Checkbox true */
+    .theme-toggle:has(input[type="checkbox"]:checked) .compact {
+        font-weight: bold;
     }
 
     :global(body) {
