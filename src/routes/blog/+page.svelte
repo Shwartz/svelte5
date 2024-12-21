@@ -234,7 +234,7 @@
     .content {
       width: 100%;
       display: grid;
-      gap: 0.5rem;
+      gap: 0.5rem 1rem;
       grid-template-columns: 1fr auto;
       grid-template-areas:
 			"b b"
@@ -254,8 +254,7 @@
 
     .visual {
       align-self: center;
-      width: 310px;
-      height: 100%;
+			flex: 0 0 310px;
     }
 
     .tags {
