@@ -21,7 +21,6 @@
 		selectedFilter = selectedFilter === tag ? null : tag;
 	}
 
-
 	onMount(() => {
 		const checkbox = document.getElementById('toggleCompact') as HTMLInputElement;
 		checkbox.addEventListener('change', toggleView);

@@ -21,6 +21,9 @@ const config = {
 		}),
 		paths: {
 			base: dev ? '' : '/svelte5'
+		},
+		prerender: {
+			entries: ['/thoughts/[slug]']
 		}
 	}
 };

@@ -1,7 +1,6 @@
 import FlexImg from '$lib/blog/heroSvg/ImgPost1.svelte';
 import {base} from "$app/paths";
 
-
 export const postsArr = [
 	{
 		url: `${base}/thoughts/how-to-build-css-layout-using-flexbox`,
@@ -16,7 +15,7 @@ export const postsArr = [
 		url: `${base}/thoughts/build-error-on-vercel`,
 		title: 'Build error on Vercel',
 		description: 'Finding out about build errors',
-		tags: ['CSS'],
+		tags: ['JavaScript'],
 		publishedDate: 'March, 2024',
 		readingTime: '10 min read',
 		likes: '5 likes',
