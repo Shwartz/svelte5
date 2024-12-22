@@ -17,14 +17,12 @@ const config = {
 		adapter: adapter({
 			pages: 'build',
 			assets: 'build',
-			fallback: null
+			fallback: null,
+			runtime: 'nodejs18.x',
 		}),
 		paths: {
 			base: dev ? '' : '/svelte5'
 		},
-		prerender: {
-			entries: ['/thoughts/[slug]']
-		}
 	}
 };
 
