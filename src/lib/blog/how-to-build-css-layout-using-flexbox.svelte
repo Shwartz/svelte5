@@ -31,7 +31,7 @@
     ex21,
     ex22,
     ex23
-  } from "$lib/blog/2024-06-css-layout/sourceExamples.js";
+  } from "$lib/blog/2024-06-css-layout/sourceExamples";
 
   const title = "How to create CSS Layout using Flexbox | Post";
   const description = "Explaining advanced layout techniques with step-by-step simple examples using CSS Flexbox";
