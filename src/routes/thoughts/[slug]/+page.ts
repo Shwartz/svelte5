@@ -1,6 +1,7 @@
-import type {PageServerLoad} from './$types';
+import type { PageLoad } from './$types';
 
-export function load({params}: PageServerLoad): {slug: string} {
-  const {slug} = params;
-  return {slug};
-}
+export const load: PageLoad = ({ params }) => {
+  const { slug } = params;
+  console.log({ slug });
+  return { slug };
+};

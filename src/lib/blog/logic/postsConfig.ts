@@ -4,7 +4,7 @@ import {base} from "$app/paths";
 
 export const postsArr = [
 	{
-		url: '/url1',
+		url: `${base}/thoughts/svelte-vs-reactjs`,
 		title: 'Post 1',
 		description: 'Some description here 1',
 		tags: ['JavaScript', 'CSS'],
