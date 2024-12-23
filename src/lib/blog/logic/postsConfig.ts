@@ -1,4 +1,5 @@
 import FlexImg from '$lib/blog/heroSvg/ImgPost1.svelte';
+import VercelImg from '$lib/blog/heroSvg/vercelError.svelte';
 import {base} from "$app/paths";
 
 export const postsArr = [
@@ -19,7 +20,7 @@ export const postsArr = [
 		publishedDate: 'March, 2024',
 		readingTime: '10 min read',
 		likes: '5 likes',
-		Visual: FlexImg
+		Visual: VercelImg
 	},{
 		url: `${base}/thoughts/2d-3d-animations-with-css`,
 		title: '2D and 3D animations using CSS',

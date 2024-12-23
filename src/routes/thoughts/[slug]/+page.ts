@@ -8,6 +8,8 @@ export const load: PageLoad = ({ params }) => {
 
 export function entries() {
   // Return an array of slugs that should be prerendered
+  // TODO: this probably only for GitHub, on Vercel it will work with different adapter
+  // However, if need similar, I should reuse postConfig.ts and simply loop through slugs
   return [
     { slug: 'how-to-build-css-layout-using-flexbox' },
     { slug: 'build-error-on-vercel' },
