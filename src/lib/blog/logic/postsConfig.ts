@@ -1,5 +1,6 @@
 import FlexImg from '$lib/blog/heroSvg/ImgPost1.svelte';
 import VercelImg from '$lib/blog/heroSvg/vercelError.svelte';
+import AnimationImg from '$lib/blog/heroSvg/2d3dVisual.svelte';
 import {base} from "$app/paths";
 
 export const postsArr = [
@@ -29,7 +30,7 @@ export const postsArr = [
 		publishedDate: 'March, 2024',
 		readingTime: '10 min read',
 		likes: '5 likes',
-		Visual: FlexImg
+		Visual: AnimationImg
 	},{
 		url: `${base}/thoughts/practical-usage-of-CSS-pseudo-selectors`,
 		title: 'Practical usage of CSS pseudo-class selectors',
