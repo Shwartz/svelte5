@@ -50,10 +50,6 @@
 </div>
 
 <style lang="scss">
-  .blog {
-    background: white;
-  }
-
   section {
     transition: all 0.3s;
   }

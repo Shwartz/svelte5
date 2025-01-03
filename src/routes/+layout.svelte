@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
-	import {base} from '$app/paths';
+	import { base } from '$app/paths';
 	import '../app.scss';
 
 	onNavigate((navigation) => {
@@ -22,17 +22,19 @@
 
 <div class="page">
 	<div class="container">
-		<header>
-			<nav>
-				<a href="{base}/">Andris Švarcs</a>
-				<a href="{base}/thoughts">Blog</a>
-				<a href="{base}/news-archive">News archive</a>
-			</nav>
-			<div>
-				[i][c][o][n][s]
-			</div>
-		</header>
-		<slot />
+		<div class="grid">
+			<header>
+				<nav>
+					<a href="{base}/">Andris Švarcs</a>
+					<a href="{base}/thoughts">Blog</a>
+					<a href="{base}/news-archive">News archive</a>
+				</nav>
+				<div>
+					[i][c][o][n][s]
+				</div>
+			</header>
+			<slot />
+		</div>
 	</div>
 </div>
 
