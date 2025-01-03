@@ -16,10 +16,12 @@ body {
   width: 100%;
   padding: 1rem 4rem;
   height: 100vh;
+  container-type: inline-size;
+  container-name: gridColumns;
 }
 
 .grid {
-  --col-count: 8;
+  --col-count: 2;
   --gap: 1.5rem;
   --line-color: #FF060033;
   --line-width: 1px;
@@ -62,9 +64,20 @@ p {
   line-height: 1.75rem;
 }
 
-/*
-background: linear-gradient(90deg, transparent 24%,#4f46e4 25%, #4f46e4 30%, transparent 31%, transparent 39%,#4f46e4 40%, #4f46e4 45%, transparent 45%),linear-gradient(180deg, transparent 24%,#4f46e4 25%, #4f46e4 30%, transparent 31%, transparent 39%,#4f46e4 40%, #4f46e4 45%, transparent 45%);
-background-size: 3em 3em;
-background-color: #ffffff;
-opacity: 1
-*/
+@container gridColumns (min-width: 400px) {
+  .grid {
+    --col-count: 4;
+  }
+}
+
+@container gridColumns (min-width: 800px) {
+  .grid {
+    --col-count: 6;
+  }
+}
+
+@container gridColumns (min-width: 1172px) {
+  .grid {
+    --col-count: 8;
+  }
+}
