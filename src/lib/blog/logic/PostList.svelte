@@ -1,20 +1,31 @@
+<!-- PostList.svelte -->
 <script lang="ts">
 	import { postsArr } from '$lib/blog/logic/postsConfig';
 	import { TrOutlineCalendarMonth, TrOutlineClock, TrOutlineHeart } from 'svelte-icons-pack/tr';
 	import Tag from '$lib/components/snippets/Tag.svelte';
 	import { Icon } from 'svelte-icons-pack';
 
-	// This is how I get props in child <PostList {selectedFilter />
-	export let selectedFilter: string | null = null;
-	export let compact: boolean;
+	interface PostListProps {
+		selectedFilter: string | null;
+		compact: boolean;
+		onCountChange: (count: number) => void
+	}
 
-	$: filteredPosts = selectedFilter
-		? postsArr.filter(post => post.tags.includes(selectedFilter ?? ''))
-		: postsArr;
+	let {selectedFilter, compact, onCountChange}:PostListProps = $props();
+
+	const filteredPosts = $derived(() => {
+		return selectedFilter
+			? postsArr.filter(post => post.tags.includes(selectedFilter!))
+			: postsArr;
+	});
+
+	$effect(() => {
+		onCountChange(filteredPosts().length);
+	});
 </script>
 
 <div class="blog" class:compact={compact} class:expanded={!compact}>
-	{#each filteredPosts as {url, title, description, tags, publishedDate, readingTime, likes, Visual}, index}
+	{#each filteredPosts() as {url, title, description, tags, publishedDate, readingTime, likes, Visual}, index}
 		<section class="post" style="view-transition-name: post-{index}">
 			<div class="visual" style="view-transition-name: visual-{index}">
 				<Visual />
