@@ -15,7 +15,7 @@ body {
   max-width: 1440px;
   width: 100%;
   padding: 1rem 4rem;
-  height: 100vh;
+  min-height: 100vh;
   container-type: inline-size;
   container-name: gridColumns;
 }
@@ -26,6 +26,7 @@ body {
   --line-color: #FF060033;
   --line-width: 1px;
   --col-width: calc((100% - (var(--gap) * (var(--col-count) - 1))) / var(--col-count));
+
   position: relative;
   min-height: 100%;
 
