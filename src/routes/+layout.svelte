@@ -33,7 +33,14 @@
 					[i][c][o][n][s]
 				</div>
 			</header>
-			<slot />
+			<div>
+				<slot />
+			</div>
+			<footer>
+				<div>One</div>
+				<div>Two</div>
+				<div>Three</div>
+			</footer>
 		</div>
 	</div>
 </div>
@@ -42,4 +49,8 @@
   header {
     display: flex;
   }
+
+	footer {
+		margin-top: auto;
+	}
 </style>

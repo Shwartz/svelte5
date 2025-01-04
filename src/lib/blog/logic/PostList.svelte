@@ -69,8 +69,8 @@
   .post {
     display: flex;
     gap: 1.5rem;
-    border-top: 1px dotted #ffcdcc;
-    border-bottom: 1px dotted #ffcdcc;
+    border-top: 1px dotted var(--grid-color);
+    border-bottom: 1px dotted var(--grid-color);
 
     &:not(:first-child) {
       margin-top: 1rem;

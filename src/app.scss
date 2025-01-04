@@ -14,28 +14,27 @@ body {
 .container {
   max-width: 1440px;
   width: 100%;
-  padding: 1rem 4rem;
+  padding: 1rem;
   min-height: 100vh;
-  container-type: inline-size;
-  container-name: gridColumns;
 }
 
 .grid {
   --col-count: 2;
   --gap: 1.5rem;
-  --line-color: #FF060033;
   --line-width: 1px;
   --col-width: calc((100% - (var(--gap) * (var(--col-count) - 1))) / var(--col-count));
 
+  display: flex;
+  flex-direction: column;
   position: relative;
   min-height: 100%;
 
   background-image: repeating-linear-gradient(
                   to right,
                   transparent var(--col-width),
-                  var(--line-color) calc(var(--col-width) + var(--line-width)),
+                  var(--grid-color) calc(var(--col-width) + var(--line-width)),
                   transparent var(--col-width) calc(var(--col-width) + var(--gap)),
-                  var(--line-color) calc(var(--col-width) + var(--gap)),
+                  var(--grid-color) calc(var(--col-width) + var(--gap)),
                   transparent calc(var(--col-width) + var(--gap) + var(--line-width)),
                   transparent calc(100% - (var(--col-width) + var(--gap)) * (var(--col-count) - 2)),
   );
@@ -47,7 +46,7 @@ body {
     bottom: 0;
     right: 0;
     width: 1px;
-    background: var(--line-color);
+    background: var(--grid-color);
     opacity: 0.5;
   }
 }
@@ -65,19 +64,27 @@ p {
   line-height: 1.75rem;
 }
 
-@container gridColumns (min-width: 400px) {
+@media (min-width: 500px) {
   .grid {
     --col-count: 4;
   }
 }
 
-@container gridColumns (min-width: 800px) {
+@media (min-width: 800px) {
+  .container {
+    padding: 1rem 2rem;
+  }
+
   .grid {
     --col-count: 6;
   }
 }
 
-@container gridColumns (min-width: 1172px) {
+@media (min-width: 1172px) {
+  .container {
+    padding: 1rem 4rem;
+  }
+
   .grid {
     --col-count: 8;
   }
