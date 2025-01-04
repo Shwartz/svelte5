@@ -42,18 +42,22 @@
 	}
 </script>
 
-<h1>Blog</h1>
+<h1 class="title">blog</h1>
+<p class="intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consectetur semper magna, quis consequat orci commodo
+	nec. Vestibulum ante ipsum primis in faucibus orci luctus.</p>
 <div class="headerTags">
-	<div>{postCount} {postCount === 1 ? 'item' : 'items'}</div>
-	<div class="filter">
-		{#each allTags as tag}
-			<button
-				onclick={() => handleFilterClick(tag)}
-				class="btnTag"
-			>
-				<Tag active={selectedFilter === tag} blogCategory={tag} />
-			</button>
-		{/each}
+	<div class="flex">
+		<div>{postCount} {postCount === 1 ? 'item' : 'items'}</div>
+		<div class="filter">
+			{#each allTags as tag}
+				<button
+					onclick={() => handleFilterClick(tag)}
+					class="btnTag"
+				>
+					<Tag active={selectedFilter === tag} blogCategory={tag} />
+				</button>
+			{/each}
+		</div>
 	</div>
 	<ToggleCompact bind:checked />
 </div>
@@ -64,7 +68,23 @@
   .headerTags {
     display: flex;
     justify-content: space-between;
+    margin: 4rem 0 1rem;
   }
+
+  .flex {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 9rem;
+    color: #00000033;
+    line-height: normal;
+  }
+
+	.intro {
+  	width: 100%;
+	}
 
   .btnTag {
     border: none;
@@ -77,6 +97,18 @@
   .filter {
     display: flex;
     gap: 4px;
+  }
+
+	@media (min-width: 600px) {
+		.intro {
+			width: 75%;
+		}
+	}
+
+  @media (min-width: 1200px) {
+    .intro {
+      width: 50%;
+    }
   }
 </style>
 
