@@ -1,4 +1,3 @@
-<!-- PostList.svelte -->
 <script lang="ts">
 	import { postsArr } from '$lib/blog/logic/postsConfig';
 	import { TrOutlineCalendarMonth, TrOutlineClock, TrOutlineHeart } from 'svelte-icons-pack/tr';
@@ -61,10 +60,6 @@
 </div>
 
 <style lang="scss">
-  section {
-    transition: all 0.3s;
-  }
-
   /* EXPANDED: General styles, Expand as default */
   .post {
     display: flex;

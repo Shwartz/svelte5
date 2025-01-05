@@ -1,25 +1,18 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { TrOutlineArrowsDiagonal } from 'svelte-icons-pack/tr';
 	import { Icon } from 'svelte-icons-pack';
 
-	export let checked: boolean = false;
-
-	onMount(() => {
-		const savedState = localStorage.getItem('themeCompactState');
-		checked = savedState === 'true';
-		console.log('checked isCompact: ', checked);
-	});
-
-	function toggleCompact() {
-		checked = checked === true;
-		localStorage.setItem('themeCompactState', checked.toString());
-		console.log('checked isCompact: ', checked);
+	interface ToggleCompactProps {
+		checked: boolean;
+		toggleCompact: () => void;
 	}
+
+	let { checked, toggleCompact }: ToggleCompactProps = $props();
+
 </script>
 
 <label for="toggleCompact" class="theme-toggle">
-	<input id="toggleCompact" type="checkbox" bind:checked on:change={toggleCompact} />
+	<input id="toggleCompact" type="checkbox" checked={checked} onchange={toggleCompact} />
 	<span class="magic"><Icon size="12" color="000000" src={TrOutlineArrowsDiagonal} /></span>
 	<span class="comfortable">comfortable</span>&nbsp;/&nbsp;
 	<span class="compact">compact</span>

@@ -1,4 +1,3 @@
-<!-- +page.svelte -->
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import ToggleCompact from '$lib/components/ToggleCompact.svelte';
@@ -14,16 +13,26 @@
 	// Get unique tags from all posts and asset them as cats type
 	const allTags = [...new Set(postsArr.flatMap(post => post.tags))] as cats[];
 
+	onMount(() => {
+		const savedState = localStorage.getItem('themeCompactState');
+		checked = savedState === 'true';
+		compact = checked;
+	});
+
+	$effect(() => {
+		const savedState = localStorage.getItem('themeCompactState');
+		checked = savedState === 'true';
+	});
+
 	function handleFilterClick(tag: cats) {
 		selectedFilter = selectedFilter === tag ? null : tag;
 	}
 
-	onMount(() => {
-		const checkbox = document.getElementById('toggleCompact') as HTMLInputElement;
-		checkbox.addEventListener('change', toggleView);
-		const savedState = localStorage.getItem('themeCompactState');
-		compact = savedState === 'true';
-	});
+	function toggleCompact() {
+		checked = !checked;
+		localStorage.setItem('themeCompactState', checked.toString());
+		toggleView();
+	}
 
 	function handlePostCountChange(count: number) {
 		postCount = count;
@@ -59,7 +68,7 @@
 			{/each}
 		</div>
 	</div>
-	<ToggleCompact bind:checked />
+	<ToggleCompact checked={checked} toggleCompact={toggleCompact} />
 </div>
 
 <PostList {compact} {selectedFilter} onCountChange={handlePostCountChange} />
