@@ -9,6 +9,9 @@
 		amount: [],
 	});
 
+	let checked = $state(false);
+	let secondChecked = $state(false);
+
 	function increase(e) {
 		console.log({e});
 		e.target.style.background = 'yellow';
@@ -22,8 +25,15 @@
 	}
 
 	let outputText = $state('');
+	let todo = $state({ name: "", done: false });
 
 </script>
+
+<div>
+	<p>Checked {checked} | secondChecked {secondChecked}</p>
+	<input type="checkbox" bind:checked/>
+	<input type="checkbox" bind:checked={secondChecked}/>
+</div>
 
 <div class="counter">
 	<p>Count is {numbers.count}, clicked: {numbers.amount.length}</p>
@@ -37,4 +47,29 @@
 <div>
 	<input type="text" bind:value={outputText}>
 	<p>Output: {outputText}</p>
+</div>
+
+<div>
+	<h2>Add Todo</h2>
+
+	<form>
+		<label for="name">Todo</label>
+		<input
+			id="name"
+			type="text"
+			bind:value={todo.name}
+			placeholder="Enter a new todo"
+		/>
+		<div>
+			<input id="done" name="done" type="checkbox" bind:checked={todo.done} />
+			<label for="done">Done</label>
+		</div>
+	</form>
+
+	<p>
+		Todo: {todo.name}
+	</p>
+	<p>
+		Done: {todo.done ? "Yes" : "No"}
+	</p>
 </div>
