@@ -1,8 +1,10 @@
 <script lang="ts">
 	type FormDataEntryValue = string | File;
+
 	interface Todo {
 		id: string;
-		[key: string]: FormDataEntryValue | string;
+		[key: string]: FormDataEntryValue | string | boolean;
+		done: boolean;
 	}
 	let todos = $state<Todo[]>([]);
 
@@ -12,6 +14,10 @@
 		todos.push(todo);
 		(e.target as HTMLFormElement).reset();
 		e.preventDefault();
+	}
+
+	const removeTodo = (todo: Todo) => {
+		todos = todos.filter((t) => t.id !== todo.id);
 	}
 </script>
 
@@ -35,6 +41,7 @@
 				<label for={todo.id}>
 					{todo.name} ({todo.done ? "done" : "not done"})
 				</label>
+				<button onclick={() => removeTodo(todo)}>Remove</button>
 			</li>
 			{/each}
 	</ul>
