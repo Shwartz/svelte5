@@ -1,7 +1,7 @@
 <script>
-	import LogicTesting from '$lib/components/learning/LogicTesting.svelte';
+	import Todos from '$lib/components/learning/todo/Todos.svelte';
 </script>
 
 <h1>News Archive</h1>
-<LogicTesting />
+<Todos />
 
