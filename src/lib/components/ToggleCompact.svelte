@@ -18,10 +18,10 @@
   }
 }}>
 	<label for="toggleCompact" class="theme-toggle">
-		<input class="visually-hidden" id="toggleCompact" type="checkbox" checked={checked} onchange={toggleCompact} />
-		<span class="magic"><Icon size="12" color="000000" src={TrOutlineArrowsDiagonal} /></span>
-		<span class="comfortable">comfortable</span>&nbsp;/&nbsp;
-		<span class="compact">compact</span>
+		<input class="visually-hidden" id="toggleCompact" type="checkbox" {checked} onchange={toggleCompact} />
+		<span aria-hidden="true" class="magic"><Icon size="12" color="000000" src={TrOutlineArrowsDiagonal} /></span>
+		<span aria-hidden="true" class="comfortable">comfortable</span>&nbsp;/&nbsp;
+		<span aria-hidden="true" class="compact">compact</span>
 	</label>
 </div>
 

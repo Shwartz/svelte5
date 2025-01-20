@@ -68,7 +68,7 @@
 			{/each}
 		</div>
 	</div>
-	<ToggleCompact checked={checked} toggleCompact={toggleCompact} />
+	<ToggleCompact {checked} toggleCompact={toggleCompact} />
 </div>
 
 <PostList {compact} {selectedFilter} onCountChange={handlePostCountChange} />
