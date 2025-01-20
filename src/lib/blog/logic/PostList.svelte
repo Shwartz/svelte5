@@ -86,15 +86,6 @@
   }
 
   .content {
-    padding: 1.5rem 0;
-    width: 50%;
-
-    h1, p {
-      margin: 0;
-    }
-  }
-
-  .content {
     display: grid;
     align-items: start;
     width: 50%;
@@ -103,6 +94,11 @@
 			'b'
 			'c'
 			'd';
+    padding: 1.5rem 0;
+
+    h1, p {
+      margin: 0;
+    }
   }
 
   .icons {
@@ -211,11 +207,10 @@
   }
 
   /* Fallback for no JS solution */
-  /* Expanded version */
+  /*   no-js Expanded version */
   :global(.no-js:has(input#toggleCompact[type="checkbox"])) .blog {
     .post {
       flex-direction: row;
-      background: green;
     }
 
     .visual {
@@ -223,9 +218,19 @@
     }
 
     .content {
-      display: flex;
-      flex-direction: row-reverse;
+      display: grid;
+      align-items: start;
       width: 50%;
+      grid-template-areas:
+			'a'
+			'b'
+			'c'
+			'd';
+      padding: 1.5rem 0;
+
+      h1, p {
+        margin: 0;
+      }
     }
 
     .tags {
@@ -233,23 +238,26 @@
     }
   }
 
-  /* Compact version */
+  /*   no-js Compact version */
   :global(.no-js:has(input#toggleCompact[type="checkbox"]:checked)) .blog {
-    background: #95de95;
-
     .post {
       flex-direction: row;
-      background: #3a3a3a;
     }
 
     .visual {
-      width: 310px;
+      align-self: center;
+      flex: 0 0 310px;
     }
 
     .content {
-      display: flex;
-      flex-direction: row-reverse;
       width: 100%;
+      display: grid;
+      gap: 0.5rem 1rem;
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+			"b b"
+			"c a"
+			"d d";
     }
 
     .tags {
