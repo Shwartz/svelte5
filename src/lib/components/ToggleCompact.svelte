@@ -11,36 +11,40 @@
 
 </script>
 
-<label for="toggleCompact" class="theme-toggle">
-	<input id="toggleCompact" type="checkbox" checked={checked} onchange={toggleCompact} />
-	<span class="magic"><Icon size="12" color="000000" src={TrOutlineArrowsDiagonal} /></span>
-	<span class="comfortable">comfortable</span>&nbsp;/&nbsp;
-	<span class="compact">compact</span>
-</label>
+<div role="switch" aria-checked={checked} tabindex="0" onkeydown={(e) => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    toggleCompact();
+  }
+}}>
+	<label for="toggleCompact" class="theme-toggle">
+		<input class="visually-hidden" id="toggleCompact" type="checkbox" checked={checked} onchange={toggleCompact} />
+		<span class="magic"><Icon size="12" color="000000" src={TrOutlineArrowsDiagonal} /></span>
+		<span class="comfortable">comfortable</span>&nbsp;/&nbsp;
+		<span class="compact">compact</span>
+	</label>
+</div>
 
 <style>
-		.magic {
+    .magic {
         outline: 1px solid #000;
         color: rgb(0, 0, 0);
         border-radius: 2px;
         outline-offset: 1px;
         margin-right: 4px;
-		}
+    }
+
     .theme-toggle {
-				display: flex;
-				align-items: center;
-				gap: 2px;
+        display: flex;
+        align-items: center;
+        gap: 2px;
         cursor: pointer;
     }
 
-    input[type="checkbox"] {
-        display: none;
+    /* Checkbox false */
+    .theme-toggle:has(input[type="checkbox"]:not(:checked)) .comfortable {
+        font-weight: bold;
     }
-
-		/* Checkbox false */
-		.theme-toggle:has(input[type="checkbox"]:not(:checked)) .comfortable {
-				font-weight: bold;
-		}
 
     /* Checkbox true */
     .theme-toggle:has(input[type="checkbox"]:checked) .compact {

@@ -64,6 +64,10 @@ p {
   line-height: 1.75rem;
 }
 
+.visually-hidden {
+  display: none;
+}
+
 @media (min-width: 500px) {
   .grid {
     --col-count: 4;
