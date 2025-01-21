@@ -68,6 +68,13 @@ p {
   display: none;
 }
 
+button.clean {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
 @media (min-width: 500px) {
   .grid {
     --col-count: 4;

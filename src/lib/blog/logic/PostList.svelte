@@ -73,6 +73,11 @@
     }
   }
 
+	/* Toggle background grid lines */
+	:global(.gridOff) .post {
+		border-bottom: none;
+	}
+
   .visual {
     display: flex;
     align-items: center;
