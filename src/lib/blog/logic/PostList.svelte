@@ -75,7 +75,7 @@
 
 	/* Toggle background grid lines */
 	:global(.gridOff) .post {
-		border-bottom: none;
+		border-bottom-color: rgba(0,0,0,0);
 	}
 
   .visual {

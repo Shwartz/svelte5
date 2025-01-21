@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { base } from '$app/paths';
@@ -6,7 +7,13 @@
 	import { Icon } from 'svelte-icons-pack';
 	import '../app.scss';
 
-	let isGridOn = $state(true);
+	const GRID_STATE = 'gridState';
+	let initialGridState = true;
+	if (browser && localStorage.getItem(GRID_STATE) !== null) {
+		initialGridState = JSON.parse(localStorage.getItem(GRID_STATE) ?? 'false');
+	}
+
+	let isGridOn = $state(initialGridState);
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
@@ -21,6 +28,7 @@
 
 	const toggleGrid = () => {
 		isGridOn = !isGridOn;
+		localStorage.setItem(GRID_STATE, JSON.stringify(isGridOn));
 	}
 </script>
 
@@ -30,7 +38,7 @@
 
 <div class="page">
 	<div class="container">
-		<div class={`grid ${isGridOn ? 'gridOff' : ''}`}>
+		<div class={`grid ${isGridOn ? '' : 'gridOff'}`}>
 			<header>
 				<a href="{base}/" class="me">Andris Švarcs</a>
 				<nav>
@@ -39,7 +47,7 @@
 					<a href="{base}/good-read">good read</a>
 				</nav>
 				<div class="settings">
-					<button type="button" class={`clean ${!isGridOn ? 'on' : ''}`} onclick={toggleGrid}>
+					<button type="button" class={`clean ${isGridOn ? 'on' : ''}`} onclick={toggleGrid}>
 						<Icon size="20" color="var(--black)" src={TrOutlineAdjustments} />
 					</button>
 					<button type="button" class="clean">
