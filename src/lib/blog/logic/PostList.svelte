@@ -64,12 +64,9 @@
   .post {
     display: flex;
     gap: 1.5rem;
-    border-top: 1px dotted var(--grid-color);
     border-bottom: 1px dotted var(--grid-color);
-
-    &:not(:first-child) {
-      margin-top: 1rem;
-    }
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
 
     &:nth-child(even) {
       flex-direction: row-reverse;
