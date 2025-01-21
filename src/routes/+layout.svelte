@@ -40,11 +40,11 @@
 				</nav>
 				<div class="settings">
 					<button type="button" class={`clean ${!isGridOn ? 'on' : ''}`} onclick={toggleGrid}>
-						<Icon size="16" color="var(--black)" src={TrOutlineAdjustments} />
+						<Icon size="20" color="var(--black)" src={TrOutlineAdjustments} />
 					</button>
 					<button type="button" class="clean">
-						<Icon size="16" color="var(--black)" src={TrOutlineSun} />
-						<Icon className="moon" size="16" color="var(--black)" src={TrOutlineMoonStars} />
+						<Icon size="20" color="var(--black)" src={TrOutlineSun} />
+						<Icon className="moon" size="20" color="var(--black)" src={TrOutlineMoonStars} />
 					</button>
 				</div>
 			</header>
