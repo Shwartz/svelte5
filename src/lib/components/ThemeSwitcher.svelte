@@ -1,9 +1,27 @@
-<script>
+<script lang="ts">
 	import { browser } from '$app/environment';
 	import { TrOutlineMoonStars, TrOutlineSun } from 'svelte-icons-pack/tr';
 	import { Icon } from 'svelte-icons-pack';
 	import { theme } from '$lib/stores/theme';
 	import { onMount } from 'svelte';
+
+	const getPreferredColorScheme = () => {
+		if (browser) {
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+		}
+		return 'light';
+	};
+
+	const getInitialTheme = () => {
+		if (browser) {
+			const storedTheme = localStorage.getItem('theme');
+			if (storedTheme) {
+				return storedTheme as 'dark' | 'light';
+			}
+			return getPreferredColorScheme();
+		}
+		return 'light';
+	};
 
 	const toggleTheme = () => {
 		theme.update(currentTheme => {
@@ -16,14 +34,30 @@
 	}
 
 	onMount(() => {
-		return theme.subscribe(value => {
-			if (typeof document !== 'undefined') {
-				document.documentElement.setAttribute('data-theme', value);
-				/*if (browser) {
-					localStorage.setItem('theme', value);
-				}*/
-			}
-		});
+		theme.set(getInitialTheme());
+
+		if (browser) {
+			const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+			const handleChange = () => {
+				if (!localStorage.getItem('theme')) {
+					theme.set(getPreferredColorScheme());
+				}
+			};
+
+			mediaQuery.addEventListener('change', handleChange);
+
+			return () => {
+				mediaQuery.removeEventListener('change', handleChange);
+			};
+		}
+	});
+
+	$effect(() => {
+		if (browser) {
+			theme.subscribe(currentTheme => {
+				document.documentElement.setAttribute('data-theme', currentTheme);
+			});
+		}
 	});
 </script>
 
