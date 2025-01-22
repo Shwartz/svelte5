@@ -49,7 +49,9 @@
 				</nav>
 				<div class="settings">
 					<button type="button" class={`clean ${isGridOn ? 'on' : ''}`} onclick={toggleGrid}>
-						<Icon size="20" color="var(--text)" src={TrOutlineAdjustments} />
+						<span>
+							<Icon size="14" color="var(--text)" src={TrOutlineAdjustments} />
+						</span>
 					</button>
 					<ThemeSwitcher />
 				</div>
@@ -93,19 +95,39 @@
 
   .settings {
     display: flex;
-    gap: 1rem;
 
     button {
-      width: 24px;
-      height: 24px;
+      width: 44px;
+      height: 44px;
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 4px;
 
-      &.on {
+      span {
+				display: flex;
+        padding: 2px;
+				width: 20px;
+				height: 20px;
+        border-radius: 4px;
         border: 1px solid var(--text);
       }
+
+			:global(svg) {
+				display: none;
+			}
+
+      &.on :global(svg) {
+				display: block;
+			}
+
+			> * {
+        transition: all 0.3s;
+			}
+
+			&:hover > * {
+				transform: scale(1.2);
+			}
     }
   }
 
