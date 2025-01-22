@@ -3,9 +3,10 @@
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { base } from '$app/paths';
-	import {TrOutlineAdjustments, TrOutlineSun, TrOutlineMoonStars} from 'svelte-icons-pack/tr';
+	import { TrOutlineAdjustments } from 'svelte-icons-pack/tr';
 	import { Icon } from 'svelte-icons-pack';
 	import '../app.scss';
+	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
 
 	const GRID_STATE = 'gridState';
 	let initialGridState = true;
@@ -29,7 +30,7 @@
 	const toggleGrid = () => {
 		isGridOn = !isGridOn;
 		localStorage.setItem(GRID_STATE, JSON.stringify(isGridOn));
-	}
+	};
 </script>
 
 <svelte:head>
@@ -50,10 +51,7 @@
 					<button type="button" class={`clean ${isGridOn ? 'on' : ''}`} onclick={toggleGrid}>
 						<Icon size="20" color="var(--black)" src={TrOutlineAdjustments} />
 					</button>
-					<button type="button" class="clean">
-						<Icon size="20" color="var(--black)" src={TrOutlineSun} />
-						<Icon className="moon" size="20" color="var(--black)" src={TrOutlineMoonStars} />
-					</button>
+					<ThemeSwitcher />
 				</div>
 			</header>
 			<div>
@@ -71,59 +69,55 @@
 <style lang="scss">
   header {
     display: flex;
-		justify-content: space-between;
+    justify-content: space-between;
 
-		a {
-			color: var(--black);
-			text-decoration: none;
+    a {
+      color: var(--black);
+      text-decoration: none;
 
-			&:hover,
-			&:focus {
-				text-decoration: underline;
-			}
-		}
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
 
-		.me {
-			font-weight: bold;
-		}
+    .me {
+      font-weight: bold;
+    }
   }
 
-	nav {
-		display: flex;
-		gap: 2rem;
-	}
+  nav {
+    display: flex;
+    gap: 2rem;
+  }
 
-	.settings {
-		display: flex;
-		gap: 1rem;
+  .settings {
+    display: flex;
+    gap: 1rem;
 
-		button {
+    button {
       width: 24px;
       height: 24px;
       display: flex;
       justify-content: center;
       align-items: center;
-			border-radius: 4px;
+      border-radius: 4px;
 
-			&.on {
-				border: 1px solid var(--black);
-			}
-		}
-	}
+      &.on {
+        border: 1px solid var(--black);
+      }
+    }
+  }
 
-	:global(.moon) {
-		display: none;
-	}
+  footer {
+    margin-top: auto;
+  }
 
-	footer {
-		margin-top: auto;
-	}
+  .gridOff {
+    background-image: none;
 
-	.gridOff {
-		background-image: none;
-
-		&:after {
-			display: none;
-		}
-	}
+    &:after {
+      display: none;
+    }
+  }
 </style>
