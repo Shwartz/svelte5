@@ -49,7 +49,7 @@
 				</nav>
 				<div class="settings">
 					<button type="button" class={`clean ${isGridOn ? 'on' : ''}`} onclick={toggleGrid}>
-						<Icon size="20" color="var(--black)" src={TrOutlineAdjustments} />
+						<Icon size="20" color="var(--text)" src={TrOutlineAdjustments} />
 					</button>
 					<ThemeSwitcher />
 				</div>
@@ -72,7 +72,7 @@
     justify-content: space-between;
 
     a {
-      color: var(--black);
+      color: var(--text);
       text-decoration: none;
 
       &:hover,
@@ -104,7 +104,7 @@
       border-radius: 4px;
 
       &.on {
-        border: 1px solid var(--black);
+        border: 1px solid var(--text);
       }
     }
   }
