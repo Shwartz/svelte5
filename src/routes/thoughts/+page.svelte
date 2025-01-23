@@ -51,7 +51,7 @@
 	}
 </script>
 
-<h1 class="title">blog</h1>
+<h1 class="frankTitle">blog</h1>
 <p class="intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consectetur semper magna, quis consequat orci commodo
 	nec. Vestibulum ante ipsum primis in faucibus orci luctus.</p>
 <div class="headerTags">
@@ -85,7 +85,7 @@
     gap: 1rem;
   }
 
-  .title {
+  .frankTitle {
     font-size: 9rem;
     color: #00000033;
     line-height: normal;

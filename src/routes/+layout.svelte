@@ -7,6 +7,8 @@
 	import { Icon } from 'svelte-icons-pack';
 	import '../app.scss';
 	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
+	import "@fontsource-variable/inter";
+	import "@fontsource/frank-ruhl-libre/700.css";
 
 	const GRID_STATE = 'gridState';
 	let initialGridState = true;
@@ -69,6 +71,14 @@
 </div>
 
 <style lang="scss">
+	:global(body) {
+		font-family: "Inter Variable", sans-serif;
+	}
+
+	:global(.frankTitle) {
+		font-family: "Frank Ruhl Libre", serif;
+	}
+
   header {
     display: flex;
     justify-content: space-between;
