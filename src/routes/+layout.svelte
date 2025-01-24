@@ -113,6 +113,8 @@
       justify-content: center;
       align-items: center;
       border-radius: 4px;
+			cursor: pointer;
+			overflow: hidden;
 
       span {
 				display: flex;
@@ -121,6 +123,7 @@
 				height: 20px;
         border-radius: 4px;
         border: 1px solid var(--text);
+				will-change: transform;
       }
 
 			:global(svg) {
@@ -132,11 +135,11 @@
 			}
 
 			> * {
-        transition: all 0.3s;
+        transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 			}
 
 			&:hover > * {
-				transform: scale(1.2);
+        transform: scale(1.2);
 			}
     }
   }
