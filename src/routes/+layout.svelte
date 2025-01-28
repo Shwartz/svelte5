@@ -10,6 +10,8 @@
 	import "@fontsource-variable/inter";
 	import "@fontsource/frank-ruhl-libre/700.css";
 
+	let {children} = $props();
+
 	const GRID_STATE = 'gridState';
 	let initialGridState = true;
 	if (browser && localStorage.getItem(GRID_STATE) !== null) {
@@ -59,7 +61,7 @@
 				</div>
 			</header>
 			<div>
-				<slot />
+				{@render children()}
 			</div>
 			<footer>
 				<div>One</div>
