@@ -84,6 +84,7 @@
   header {
     display: flex;
     justify-content: space-between;
+		align-items: center;
 
     a {
       color: var(--text);

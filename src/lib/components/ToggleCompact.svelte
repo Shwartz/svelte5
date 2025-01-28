@@ -19,7 +19,7 @@
 }}>
 	<label for="toggleCompact" class="theme-toggle">
 		<input class="visually-hidden" id="toggleCompact" type="checkbox" {checked} onchange={toggleCompact} />
-		<span aria-hidden="true" class="magic"><Icon size="12" color="000000" src={TrOutlineArrowsDiagonal} /></span>
+		<span aria-hidden="true" class="magic"><Icon size="12" color="var(--text)" src={TrOutlineArrowsDiagonal} /></span>
 		<span aria-hidden="true" class="comfortable">comfortable</span>&nbsp;/&nbsp;
 		<span aria-hidden="true" class="compact">compact</span>
 	</label>
@@ -27,8 +27,7 @@
 
 <style>
     .magic {
-        outline: 1px solid #000;
-        color: rgb(0, 0, 0);
+        outline: 1px solid var(--text);
         border-radius: 2px;
         outline-offset: 1px;
         margin-right: 4px;
@@ -42,21 +41,19 @@
     }
 
     /* Checkbox false */
-    .theme-toggle:has(input[type="checkbox"]:not(:checked)) .comfortable {
-        font-weight: bold;
+    .theme-toggle:has(input[type="checkbox"]:not(:checked)) .compact {
+				color: var(--textLight);
     }
 
     /* Checkbox true */
-    .theme-toggle:has(input[type="checkbox"]:checked) .compact {
-        font-weight: bold;
+    .theme-toggle:has(input[type="checkbox"]:checked) .comfortable {
+        color: var(--textLight);
     }
 
-    :global(body) {
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
+    .theme-toggle:hover:has(input[type="checkbox"]) .compact,
+    .theme-toggle:hover:has(input[type="checkbox"]) .comfortable {
+				color: var(--text);
+		}
 
-    :global(body.dark-theme) {
-        background-color: #333;
-        color: #fff;
-    }
+
 </style>
