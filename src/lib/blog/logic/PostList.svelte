@@ -3,6 +3,7 @@
 	import { TrOutlineCalendarMonth, TrOutlineClock, TrOutlineHeart } from 'svelte-icons-pack/tr';
 	import Tag from '$lib/components/snippets/Tag.svelte';
 	import { Icon } from 'svelte-icons-pack';
+	import { type CategoryType, getCategoryColor } from '$lib/utils/categoryColors';
 
 	interface PostListProps {
 		selectedFilter: string | null;
@@ -21,12 +22,19 @@
 	$effect(() => {
 		onCountChange(filteredPosts().length);
 	});
+
+	const getFirstTagColour = (tags: CategoryType[]): string => {
+		if (tags.length > 0) {
+			return getCategoryColor(tags[0] as CategoryType);
+		}
+		return 'var(--pastel-cream)'; // Fallback colour
+	}
 </script>
 
 <div class="blog" class:compact={compact} class:expanded={!compact}>
 	{#each filteredPosts() as {url, title, description, tags, publishedDate, readingTime, likes, Visual}, index}
 		<section class="post" style="view-transition-name: post-{index}">
-			<div class="visual" style="view-transition-name: visual-{index}">
+			<div class="visual" style="background-color: {getFirstTagColour(tags as CategoryType[])}; view-transition-name: visual-{index}">
 				<Visual />
 			</div>
 			<div class="content" style="view-transition-name: content-{index}">
@@ -50,7 +58,7 @@
 				<p class="intro truncate">{description}</p>
 				<div class="tags">
 					{#each tags as tag}
-						<Tag blogCategory={tag} />
+						<Tag blogCategory={tag as CategoryType} />
 					{/each}
 				</div>
 			</div>
@@ -84,7 +92,7 @@
     justify-content: center;
     width: 50%;
     aspect-ratio: 13/8;
-    background: #f9e4b2;
+    /*background: #f9e4b2;*/
   }
 
   .content {

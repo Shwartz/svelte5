@@ -1,22 +1,12 @@
-<script lang="ts" context="module">
-	export const predefinedCategories = {
-		JavaScript: 'var(--pastel-green)',
-		CSS: 'var(--pastel-orange)',
-		Tools: 'var(--pastel-yellow)',
-		Design: 'var(--pastel-violet)',
-		Random: 'var(--pastel-red)'
-	} as const;
-
-	export type cats = keyof typeof predefinedCategories;
-</script>
-
 <script lang="ts">
-	export let blogCategory: cats = 'JavaScript';
+  import {type CategoryType, getCategoryColor} from '$lib/utils/categoryColors';
+
+  export let blogCategory: CategoryType = 'JavaScript';
 	export let active: boolean = false;
 </script>
 
-<span class="tag" class:active={active} style:background-color={predefinedCategories[blogCategory]}>
-  <slot>{blogCategory}</slot>
+<span class="tag" class:active={active} style:background-color={getCategoryColor(blogCategory)}>
+  {blogCategory}
 </span>
 
 <style>
