@@ -24,6 +24,15 @@ export default defineConfig({
 			}
 		}),
 	],
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: `
+          @use '/src/styles/index.scss' as *;
+        `,
+			}
+		},
+	},
 
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
