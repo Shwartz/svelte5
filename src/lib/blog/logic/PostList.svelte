@@ -8,19 +8,25 @@
 	interface PostListProps {
 		selectedFilter: string | null;
 		compact: boolean;
-		onCountChange: (count: number) => void
+		onCountChange?: (count: number) => void;
+		numberOfPosts?: number;
 	}
 
-	let {selectedFilter, compact, onCountChange}:PostListProps = $props();
+	let {selectedFilter, compact, onCountChange, numberOfPosts}:PostListProps = $props();
 
 	const filteredPosts = $derived(() => {
+		if (numberOfPosts) {
+			return postsArr.slice(0, numberOfPosts);
+		}
 		return selectedFilter
 			? postsArr.filter(post => post.tags.includes(selectedFilter!))
 			: postsArr;
 	});
 
 	$effect(() => {
-		onCountChange(filteredPosts().length);
+		if (onCountChange) {
+			onCountChange(filteredPosts().length);
+		}
 	});
 
 	const getFirstTagColour = (tags: CategoryType[]): string => {
