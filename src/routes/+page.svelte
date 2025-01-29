@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import PostList from '$lib/blog/logic/PostList.svelte';
 	import { onMount } from 'svelte';
 	import type { CategoryType } from '$lib/utils/categoryColors';
@@ -22,14 +23,14 @@
 <section class="blog">
 	<header>
 		<h2>Blog</h2>
-		<a href="/thoughts" aria-label="Read all blog posts">Read all <Icon size="24" color="var(--text)" src={TrOutlineArrowNarrowRight} /></a>
+		<a href="{base}/thoughts" aria-label="Read all blog posts">Read all <Icon size="24" color="var(--text)" src={TrOutlineArrowNarrowRight} /></a>
 	</header>
 	<PostList {compact} {selectedFilter} numberOfPosts={3} />
 </section>
 <section class="news">
 	<header>
 		<h2>News</h2>
-		<a href="/news-archive" aria-label="Read all news articles">Read all <Icon size="24" color="var(--text)" src={TrOutlineArrowNarrowRight} /></a>
+		<a href="{base}/news-archive" aria-label="Read all news articles">Read all <Icon size="24" color="var(--text)" src={TrOutlineArrowNarrowRight} /></a>
 	</header>
 	<main>
 		<article>
