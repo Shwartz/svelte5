@@ -1,17 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import ToggleCompact from '$lib/components/ToggleCompact.svelte';
-	import Tag, { type cats } from '$lib/components/snippets/Tag.svelte';
+	import type { CategoryType } from '$lib/utils/categoryColors';
+	import Tag from '$lib/components/snippets/Tag.svelte';
 	import PostList from '$lib/blog/logic/PostList.svelte';
 	import { postsArr } from '$lib/blog/logic/postsConfig';
 
 	let compact = $state(false);
 	let checked = $state(false);
-	let selectedFilter = $state<cats | null>(null);
+	let selectedFilter = $state<CategoryType | null>(null);
 	let postCount = $state(postsArr.length);
 
 	// Get unique tags from all posts and asset them as cats type
-	const allTags = [...new Set(postsArr.flatMap(post => post.tags))] as cats[];
+	const allTags = [...new Set(postsArr.flatMap(post => post.tags))] as CategoryType[];
 
 	onMount(() => {
 		const savedState = localStorage.getItem('themeCompactState');
@@ -24,7 +25,7 @@
 		checked = savedState === 'true';
 	});
 
-	function handleFilterClick(tag: cats) {
+	function handleFilterClick(tag: CategoryType) {
 		selectedFilter = selectedFilter === tag ? null : tag;
 	}
 
