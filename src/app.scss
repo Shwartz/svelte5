@@ -52,7 +52,6 @@ body {
   }
 }
 
-
 h1 {
   font-size: 3em;
   line-height: 3rem;
@@ -61,8 +60,8 @@ h1 {
 
 p {
   margin-top: 1.5rem;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+  font-size: index.px-to-rem(18px);
+  line-height: index.px-to-rem(28px);
 }
 
 .visually-hidden {

@@ -88,7 +88,7 @@
 
   .frankTitle {
     font-size: 9rem;
-    color: #00000033;
+    color: var(--textLight);
     line-height: normal;
   }
 
