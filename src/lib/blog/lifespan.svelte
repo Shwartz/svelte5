@@ -106,6 +106,7 @@
 		<div class="life">
 			{#each dots as dot}
 				<div
+					style="background-color: hsl({dot.id % 360}deg 30% 50%);"
 					class="dot"
 					class:lived={dot.isLived}
 					title={`Month ${dot.id + 1}`}
