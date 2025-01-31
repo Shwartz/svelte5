@@ -17,6 +17,7 @@ export function entries() {
     { slug: 'practical-usage-of-CSS-pseudo-selectors' },
     { slug: 'how-to-deal-with-CSS' },
     { slug: 'svelte-vs-reactjs' },
+    { slug: 'lifespan' },
     // Add more slugs as needed
   ];
 }

@@ -5,6 +5,16 @@ import {base} from "$app/paths";
 
 export const postsArr = [
 	{
+		url: `${base}/thoughts/lifespan`,
+		title: 'Lifespan',
+		description: 'How far you have come? Each dot represents one month on average 80 years lifespan',
+		tags: ['Random'],
+		publishedDate: 'January, 2025',
+		readingTime: '1 min read',
+		likes: '0 likes',
+		Visual: FlexImg
+	},
+	{
 		url: `${base}/thoughts/how-to-build-css-layout-using-flexbox`,
 		title: 'How to create CSS Layout using Flexbox',
 		description: 'Should you rely on CSS frameworks like Bootstrap, TailwindCSS, or others?',

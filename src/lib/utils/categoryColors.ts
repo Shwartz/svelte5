@@ -3,7 +3,7 @@ export const predefinedCategories = {
 	CSS: 'var(--pastel-orange)',
 	Tools: 'var(--pastel-rose)',
 	Design: 'var(--pastel-purple)',
-	Random: 'var(--pastel-lime)'
+	Random: 'var(--pastel-aqua)'
 } as const;
 
 export type CategoryType = keyof typeof predefinedCategories;
