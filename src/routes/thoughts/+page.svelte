@@ -78,7 +78,8 @@
   .headerTags {
     display: flex;
     justify-content: space-between;
-    margin: 4rem 0 1rem;
+    padding: 4rem 0 1.5rem;
+		border-bottom: 1px solid var(--grid-color);
   }
 
   .flex {

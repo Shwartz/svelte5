@@ -99,8 +99,8 @@
 			max={new Date().toISOString().split('T')[0]}
 		/>
 		<p>
-			Ever wondered how far you've come? Enter your birthday and see for yourself. Each dot represents 1 month, and
-			there are 960 dots (or 80 years). </p>
+			Ever wondered how far you've come? Enter your birthday and see for yourself in a sea of vibrant circles! Each dot represents 1 month, and
+			there are 960 dots (or 80 years)</p>
 	</div>
 	<main>
 		<div class="life">

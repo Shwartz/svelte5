@@ -39,6 +39,7 @@
 
 <div class="blog" class:compact={compact} class:expanded={!compact}>
 	{#each filteredPosts() as {url, title, description, tags, publishedDate, readingTime, likes, Visual}, index}
+		<a href="{url}">
 		<section class="post" style="view-transition-name: post-{index}">
 			<div class="visual" style="background-color: {getFirstTagColour(tags as CategoryType[])}; view-transition-name: visual-{index}">
 				<Visual />
@@ -58,9 +59,7 @@
 						<span>{likes}</span>
 					</div>
 				</div>
-				<h1 class="title">
-					<a href="{url}">{title}</a>
-				</h1>
+				<h1 class="title">{title}</h1>
 				<p class="intro truncate">{description}</p>
 				<div class="tags">
 					{#each tags as tag}
@@ -68,8 +67,8 @@
 					{/each}
 				</div>
 			</div>
-
 		</section>
+		</a>
 	{/each}
 </div>
 
@@ -78,9 +77,10 @@
   .post {
     display: flex;
     gap: 1.5rem;
-    border-bottom: 1px dotted var(--grid-color);
-		padding-top: 1.5rem;
+		margin-top: 1.5rem;
 		padding-bottom: 1.5rem;
+    border-top: 1px dotted var(--grid-color);
+    border-bottom: 1px dotted var(--grid-color);
 
     &:nth-child(even) {
       flex-direction: row-reverse;
@@ -186,7 +186,7 @@
 
     .visual {
       align-self: center;
-      flex: 0 0 310px;
+      flex: 0 0 21rem;
     }
 
     .tags {
@@ -262,7 +262,7 @@
 
     .visual {
       align-self: center;
-      flex: 0 0 310px;
+      flex: 0 0 21rem;
     }
 
     .content {
