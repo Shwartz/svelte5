@@ -79,7 +79,11 @@
     display: flex;
     justify-content: space-between;
     padding: 4rem 0 1.5rem;
-		border-bottom: 1px solid var(--grid-color);
+		border-bottom: 1px dotted var(--grid-color);
+  }
+
+  :global(.gridOff) .headerTags {
+    border-bottom-color: rgba(0,0,0,0);
   }
 
   .flex {

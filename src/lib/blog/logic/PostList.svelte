@@ -12,7 +12,7 @@
 		numberOfPosts?: number;
 	}
 
-	let {selectedFilter, compact, onCountChange, numberOfPosts}:PostListProps = $props();
+	let { selectedFilter, compact, onCountChange, numberOfPosts }: PostListProps = $props();
 
 	const filteredPosts = $derived(() => {
 		if (numberOfPosts) {
@@ -34,51 +34,62 @@
 			return getCategoryColor(tags[0] as CategoryType);
 		}
 		return 'var(--pastel-cream)'; // Fallback colour
-	}
+	};
 </script>
 
 <div class="blog" class:compact={compact} class:expanded={!compact}>
-	{#each filteredPosts() as {url, title, description, tags, publishedDate, readingTime, likes, Visual}, index}
+	{#each filteredPosts() as { url, title, description, tags, publishedDate, readingTime, likes, Visual }, index}
 		<a href="{url}">
-		<section class="post" style="view-transition-name: post-{index}">
-			<div class="visual" style="background-color: {getFirstTagColour(tags as CategoryType[])}; view-transition-name: visual-{index}">
-				<Visual />
-			</div>
-			<div class="content" style="view-transition-name: content-{index}">
-				<div class="icons" style="view-transition-name: icons-{index}">
-					<div>
-						<Icon size="16" color="777777" src={TrOutlineCalendarMonth} />
-						<span>{publishedDate}</span>
+			<section class="post" style="view-transition-name: post-{index}">
+				<div class="visual"
+						 style="background-color: {getFirstTagColour(tags as CategoryType[])}; view-transition-name: visual-{index}">
+					<Visual />
+				</div>
+				<div class="content" style="view-transition-name: content-{index}">
+					<div class="icons" style="view-transition-name: icons-{index}">
+						<div>
+							<Icon size="16" color="777777" src={TrOutlineCalendarMonth} />
+							<span>{publishedDate}</span>
+						</div>
+						<div>
+							<Icon size="16" color="777777" src={TrOutlineClock} />
+							<span>{readingTime}</span>
+						</div>
+						<div>
+							<Icon size="16" color="777777" src={TrOutlineHeart} />
+							<span>{likes}</span>
+						</div>
 					</div>
-					<div>
-						<Icon size="16" color="777777" src={TrOutlineClock} />
-						<span>{readingTime}</span>
-					</div>
-					<div>
-						<Icon size="16" color="777777" src={TrOutlineHeart} />
-						<span>{likes}</span>
+					<h1 class="title">{title}</h1>
+					<p class="intro truncate">{description}</p>
+					<div class="tags">
+						{#each tags as tag}
+							<Tag blogCategory={tag as CategoryType} />
+						{/each}
 					</div>
 				</div>
-				<h1 class="title">{title}</h1>
-				<p class="intro truncate">{description}</p>
-				<div class="tags">
-					{#each tags as tag}
-						<Tag blogCategory={tag as CategoryType} />
-					{/each}
-				</div>
-			</div>
-		</section>
+			</section>
 		</a>
 	{/each}
 </div>
 
 <style lang="scss">
+  .blog {
+    a {
+      cursor: url('src/assets/svg/cursor.svg') 16 16, auto;
+    }
+
+    a:hover {
+      cursor: url('src/assets/svg/cursor.svg') 16 16, pointer;
+    }
+  }
+
   /* EXPANDED: General styles, Expand as default */
   .post {
     display: flex;
     gap: 1.5rem;
-		margin-top: 1.5rem;
-		padding-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    padding-bottom: 1.5rem;
     border-top: 1px dotted var(--grid-color);
     border-bottom: 1px dotted var(--grid-color);
 
@@ -87,10 +98,11 @@
     }
   }
 
-	/* Toggle background grid lines */
-	:global(.gridOff) .post {
-		border-bottom-color: rgba(0,0,0,0);
-	}
+  /* Toggle background grid lines */
+  :global(.gridOff) .post {
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+  }
 
   .visual {
     display: flex;

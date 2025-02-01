@@ -81,6 +81,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+		padding: 1rem 0 1rem;
+		border-bottom: 1px dotted var(--grid-color);
 
 		h2 {
 			font-size: px-to-rem(32px);
@@ -103,6 +105,18 @@
 		}
   }
 
+  :global(.gridOff) header {
+    border-bottom-color: rgba(0,0,0,0);
+	}
+
+	.blog {
+    border-top: 1px dotted var(--grid-color);
+	}
+
+  :global(.gridOff) .blog {
+    border-top-color: rgba(0,0,0,0);
+  }
+
   .news {
 		main {
       display: grid;
@@ -111,7 +125,7 @@
 		}
 
 		h3 {
-			margin-top: 1rem;
+			margin-top: 1.5rem;
 			font-size: px-to-rem(24px);
 		}
 
