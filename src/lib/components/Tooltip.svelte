@@ -1,66 +1,80 @@
 <script lang="ts">
-	const { children } = $props();
+	import type { Snippet } from 'svelte';
 
+	interface TooltipProps {
+		color: string;
+		children: Snippet;
+	}
+
+	let { children, color }: TooltipProps  = $props();
 	const tooltip = $state({
 		visible: false,
-		content: 'Test content',
+		content: '',
 		x: 0,
-		y:0,
-	})
+		y: 0
+	});
 
 	function handleMouseEnter(event) {
-		const target = event.target;
+		const target = event.target.firstChild;
 		tooltip.content = target.getAttribute('title'); // Get content from title attribute
+		console.log(tooltip.content);
 		if (tooltip.content) {
 			target.removeAttribute('title'); // Prevent default browser tooltip
 			tooltip.visible = true;
+			event.target.setAttribute('data-tooltip-visible', 'true');
 		}
 	}
 
 	function handleMouseLeave(event) {
-		const target = event.target;
+		const target = event.target.firstChild;
 		if (tooltip.content) {
 			target.setAttribute('title', tooltip.content); // Restore title attribute
 			tooltip.visible = false;
+			event.event.target.removeAttribute('data-tooltip-visible');
 		}
 	}
 
 	function handleMouseMove(event) {
 		tooltip.x = event.clientX + 10; // Offset by 10px
 		tooltip.y = event.clientY + 10; // Offset by 10px
-		console.log(tooltip);
 	}
 </script>
+<div
+	role="tooltip"
+	onmousemove={handleMouseMove}
+	onmouseenter={handleMouseEnter}
+	onmouseleave={handleMouseLeave}
+>
+	{@render children()}
+	{#if tooltip.visible}
+		<div
+			class="tooltip"
+			style="top: {tooltip.y}px; left: {tooltip.x}px; box-shadow: 0 0 4px 2px {color};"
+		>
+			Read: {tooltip.content}
+		</div>
+	{/if}
+</div>
 
-<svelte:window
-	on:mousemove={handleMouseMove}
-	on:mouseenter={handleMouseEnter}
-	on:mouseleave={handleMouseLeave}
-/>
-
-{#if tooltip.visible}
-	<div
-		class="tooltip"
-		style="top: {tooltip.y}px; left: {tooltip.x}px;"
-	>
-		{tooltip.content}
-
-	</div>
-{/if}
 
 <style lang="scss">
   .tooltip {
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     color: white;
     padding: 5px;
     border-radius: 4px;
-    font-size: 14px;
-    pointer-events: none; /* Prevent blocking mouse events */
-    transform: translate(-50%, -50%);
+    font-size: px-to-rem(14px);
+    pointer-events: none;
+    transform: translate(-60%, -160%);
     z-index: 1000;
     white-space: nowrap;
-    transition: opacity 0.2s ease-in-out;
-    opacity: 1;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, visibility 0s linear 0.3s;
+		transition-delay: 0.3s;
+  }
+
+  :global([data-tooltip-visible="true"]) .tooltip {
+		opacity: 1;
   }
 </style>

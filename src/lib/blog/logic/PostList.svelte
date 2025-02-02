@@ -4,7 +4,7 @@
 	import Tag from '$lib/components/snippets/Tag.svelte';
 	import { Icon } from 'svelte-icons-pack';
 	import { type CategoryType, getCategoryColor } from '$lib/utils/categoryColors';
-	// import Tooltip from '$lib/components/Tooltip.svelte';
+	import Tooltip from '$lib/components/Tooltip.svelte';
 
 	interface PostListProps {
 		selectedFilter: string | null;
@@ -40,37 +40,39 @@
 
 <div class="blog" class:compact={compact} class:expanded={!compact}>
 	{#each filteredPosts() as { url, title, description, tags, publishedDate, readingTime, likes, Visual }, index}
-		<a href="{url}" title="my title test">
-			<section class="post" style="view-transition-name: post-{index}">
-				<div class="visual"
-						 style="background-color: {getFirstTagColour(tags as CategoryType[])}; view-transition-name: visual-{index}">
-					<Visual />
-				</div>
-				<div class="content" style="view-transition-name: content-{index}">
-					<div class="icons" style="view-transition-name: icons-{index}">
-						<div>
-							<Icon size="16" color="777777" src={TrOutlineCalendarMonth} />
-							<span>{publishedDate}</span>
+		<Tooltip color={getFirstTagColour(tags as CategoryType[])}>
+			<a href="{url}" title="{title}">
+				<section class="post" style="view-transition-name: post-{index}">
+					<div class="visual"
+							 style="background-color: {getFirstTagColour(tags as CategoryType[])}; view-transition-name: visual-{index}">
+						<Visual />
+					</div>
+					<div class="content" style="view-transition-name: content-{index}">
+						<div class="icons" style="view-transition-name: icons-{index}">
+							<div>
+								<Icon size="16" color="777777" src={TrOutlineCalendarMonth} />
+								<span>{publishedDate}</span>
+							</div>
+							<div>
+								<Icon size="16" color="777777" src={TrOutlineClock} />
+								<span>{readingTime}</span>
+							</div>
+							<div>
+								<Icon size="16" color="777777" src={TrOutlineHeart} />
+								<span>{likes}</span>
+							</div>
 						</div>
-						<div>
-							<Icon size="16" color="777777" src={TrOutlineClock} />
-							<span>{readingTime}</span>
-						</div>
-						<div>
-							<Icon size="16" color="777777" src={TrOutlineHeart} />
-							<span>{likes}</span>
+						<h1 class="title">{title}</h1>
+						<p class="intro truncate">{description}</p>
+						<div class="tags">
+							{#each tags as tag}
+								<Tag blogCategory={tag as CategoryType} />
+							{/each}
 						</div>
 					</div>
-					<h1 class="title">{title}</h1>
-					<p class="intro truncate">{description}</p>
-					<div class="tags">
-						{#each tags as tag}
-							<Tag blogCategory={tag as CategoryType} />
-						{/each}
-					</div>
-				</div>
-			</section>
-		</a>
+				</section>
+			</a>
+		</Tooltip>
 	{/each}
 </div>
 
