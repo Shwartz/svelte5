@@ -4,6 +4,7 @@
 	import Tag from '$lib/components/snippets/Tag.svelte';
 	import { Icon } from 'svelte-icons-pack';
 	import { type CategoryType, getCategoryColor } from '$lib/utils/categoryColors';
+	// import Tooltip from '$lib/components/Tooltip.svelte';
 
 	interface PostListProps {
 		selectedFilter: string | null;
@@ -39,7 +40,7 @@
 
 <div class="blog" class:compact={compact} class:expanded={!compact}>
 	{#each filteredPosts() as { url, title, description, tags, publishedDate, readingTime, likes, Visual }, index}
-		<a href="{url}">
+		<a href="{url}" title="my title test">
 			<section class="post" style="view-transition-name: post-{index}">
 				<div class="visual"
 						 style="background-color: {getFirstTagColour(tags as CategoryType[])}; view-transition-name: visual-{index}">
@@ -76,11 +77,11 @@
 <style lang="scss">
   .blog {
     a {
-      cursor: url('src/assets/svg/cursor.svg') 16 16, auto;
+      cursor: url('/src/assets/svg/cursor.svg') 16 16, auto;
     }
 
     a:hover {
-      cursor: url('src/assets/svg/cursor.svg') 16 16, pointer;
+      cursor: url('/src/assets/svg/cursor.svg') 16 16, pointer;
     }
   }
 
