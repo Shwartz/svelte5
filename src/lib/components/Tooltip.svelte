@@ -64,9 +64,9 @@
     color: white;
     padding: 5px;
     border-radius: 4px;
-    font-size: px-to-rem(14px);
+    font-size: px-to-rem(11px);
     pointer-events: none;
-    transform: translate(-60%, -160%);
+    transform: translate(-60%, -190%);
     z-index: 1000;
     white-space: nowrap;
     opacity: 0;

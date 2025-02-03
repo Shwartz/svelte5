@@ -3,7 +3,7 @@
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { base } from '$app/paths';
-	import { TrOutlineAdjustments } from 'svelte-icons-pack/tr';
+	import { TrOutlineGrid3x3 } from 'svelte-icons-pack/tr';
 	import { Icon } from 'svelte-icons-pack';
 	import '../app.scss';
 	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
@@ -54,7 +54,7 @@
 				<div class="settings">
 					<button type="button" class={`clean ${isGridOn ? 'on' : ''}`} onclick={toggleGrid}>
 						<span>
-							<Icon size="14" color="var(--text)" src={TrOutlineAdjustments} />
+							<Icon size="14" color="var(--text)" src={TrOutlineGrid3x3} />
 						</span>
 					</button>
 					<ThemeSwitcher />
