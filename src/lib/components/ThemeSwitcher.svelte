@@ -5,6 +5,13 @@
 	import theme from '$lib/stores/theme';
 	import { onMount } from 'svelte';
 
+	interface ThemeSwitcherProps {
+		isMenuOpen: boolean;
+	}
+
+	let {isMenuOpen = false}: ThemeSwitcherProps = $props();
+	console.log('isMenuOpen: ', isMenuOpen);
+
 	const getPreferredColorScheme = () => {
 		if (browser) {
 			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -61,7 +68,14 @@
 	});
 </script>
 
-<button type="button" class="clean" onclick={toggleTheme}>
+<button
+	type="button"
+	class="clean"
+	onclick={toggleTheme}
+	class:menu-open={isMenuOpen}
+	tabindex={isMenuOpen ? 0 : -1}
+	aria-label="Change theme"
+>
 		<span>
 			<Icon className="sun" size="21" color="var(--text)" src={TrOutlineSun} />
 			<Icon className="moon" size="21" color="var(--text)" src={TrOutlineMoonStars} />
@@ -100,3 +114,5 @@
     }
   }
 </style>
+
+

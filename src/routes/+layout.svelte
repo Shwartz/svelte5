@@ -23,6 +23,8 @@
 	let isGridOn = $state(initialGridState);
 	let isHamburgerOn = $state(false);
 
+	const menuId = 'main-nav-menu';
+
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
 
@@ -47,6 +49,13 @@
 		isHamburgerOn = false;
 	});
 
+	$effect(() => {
+		if (isHamburgerOn) {
+			const menu = document.getElementById(menuId);
+			menu?.focus();
+		}
+	});
+
 	onMount(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			const target = event.target as HTMLElement;
@@ -54,10 +63,17 @@
 				isHamburgerOn = false;
 			}
 		};
+		const handleKeydown = (e: KeyboardEvent) => {
+			if (e.key === 'Escape' && isHamburgerOn) {
+				isHamburgerOn = false;
+			}
+		};
 		document.addEventListener('click', handleClickOutside);
+		document.addEventListener('keydown', handleKeydown);
 
 		return () => {
 			document.removeEventListener('click', handleClickOutside);
+			document.addEventListener('keydown', handleKeydown);
 		};
 	});
 </script>
@@ -78,6 +94,9 @@
 						onclick={toggleHamburger}
 						type="button"
 						class="clean"
+						aria-expanded={isHamburgerOn}
+						aria-controls={menuId}
+						aria-label={isHamburgerOn ? "Close menu" : "Open menu"}
 					>
 						{#if isHamburgerOn}
 							<Icon size="16" color="lightGreen" src={TrOutlineMenu2} />
@@ -88,19 +107,41 @@
 				</div>
 
 				<div class="menu">
-					<nav>
-						<a href="{base}/thoughts">blog</a>
-						<a href="{base}/news-archive">news archive</a>
-						<a href="{base}/good-read">good read</a>
+					<nav
+						id={menuId}
+						aria-label="Main menu"
+						class={isHamburgerOn ? 'slideMenuIn' : ''}
+						aria-hidden={!isHamburgerOn}
+					>
+						<a
+							href="{base}/thoughts"
+							tabindex={isHamburgerOn ? 0 : -1}
+							aria-current={$page.url.pathname === '/thoughts' ? 'page' : undefined}
+						>blog</a>
+						<a
+							href="{base}/news-archive"
+							tabindex={isHamburgerOn ? 0 : -1}
+							aria-current={$page.url.pathname === '/news-archive' ? 'page' : undefined}
+						>news archive</a>
+						<a
+							href="{base}/good-read"
+							tabindex={isHamburgerOn ? 0 : -1}
+							aria-current={$page.url.pathname === '/good-read' ? 'page' : undefined}
+						>good read</a>
 					</nav>
 
 					<div class="settings">
-						<button type="button" class={`clean ${isGridOn ? 'on' : ''}`} onclick={toggleGrid}>
+						<button
+							type="button"
+							class={`clean ${isGridOn ? 'on' : ''}`}
+							onclick={toggleGrid}
+							tabindex={isHamburgerOn ? 0 : -1}
+						>
 						<span>
 							<Icon size="14" color="var(--text)" src={TrOutlineGrid3x3} />
 						</span>
 						</button>
-						<ThemeSwitcher />
+						<ThemeSwitcher isMenuOpen={isHamburgerOn} />
 					</div>
 				</div>
 
@@ -168,20 +209,23 @@
   /* HEADER MENU: MOBILE*/
   header {
     .menu {
-      /*display: none;*/
-			transition: transform 400ms;
-			transform: translate3d(-110%, 100%, 0);
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			position: absolute;
-			width: 100%;
+      transition: none; /* since I use animation remove this */
+      transform: translate3d(-110%, 100%, 0);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: absolute;
+      width: 100%;
       background: red;
     }
 
-		&.slideMenuIn .menu {
-      transform: translate3d(0, 100%, 0);
-		}
+    &.slideMenuIn .menu {
+      animation: slideInWithBounce 0.5s forwards;
+    }
+
+    &:not(.slideMenuIn) .menu {
+      animation: slideOutWithBounce 0.5s forwards;
+    }
   }
 
   nav {
@@ -243,6 +287,17 @@
     }
   }
 
+  /* Prevent hidden menu from receiving focus */
+  nav[aria-hidden="true"] {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  nav[aria-hidden="false"] {
+    visibility: visible;
+    opacity: 1;
+  }
+
   footer {
     margin-top: auto;
   }
@@ -252,6 +307,36 @@
 
     &:after {
       display: none;
+    }
+  }
+
+  @keyframes slideInWithBounce {
+    0% {
+      transform: translate3d(-110%, 100%, 0);
+    }
+    60% {
+      transform: translate3d(6%, 100%, 0);
+    }
+    80% {
+      transform: translate3d(-3%, 100%, 0);
+    }
+    100% {
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+
+  @keyframes slideOutWithBounce {
+    0% {
+      transform: translate3d(0, 100%, 0);
+    }
+    20% {
+      transform: translate3d(6%, 100%, 0);
+    }
+    40% {
+      transform: translate3d(-3%, 100%, 0);
+    }
+    100% {
+      transform: translate3d(-110%, 100%, 0);
     }
   }
 </style>
