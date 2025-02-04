@@ -73,6 +73,10 @@ a {
   display: none;
 }
 
+button > svg {
+  pointer-events: none;
+}
+
 button.clean {
   border: none;
   background: none;
