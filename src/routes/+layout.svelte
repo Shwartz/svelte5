@@ -3,7 +3,7 @@
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { base } from '$app/paths';
-	import { TrOutlineGrid3x3, TrOutlineMenu2 } from 'svelte-icons-pack/tr';
+	import { TrOutlineGrid3x3, TrOutlineMenu2, TrOutlineX } from 'svelte-icons-pack/tr';
 	import { Icon } from 'svelte-icons-pack';
 	import '../app.scss';
 	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
@@ -22,6 +22,10 @@
 
 	let isGridOn = $state(initialGridState);
 	let isHamburgerOn = $state(false);
+	let isAnimated = $state(false);
+	let windowWidth = $state(0);
+	let isDesktop = $state(false);
+	let isTabbingAvailable = $derived(isDesktop ? true : isHamburgerOn);
 
 	const menuId = 'main-nav-menu';
 
@@ -42,6 +46,9 @@
 	};
 
 	const toggleHamburger = () => {
+		if (!isAnimated) {
+			isAnimated = !isAnimated; // invoke once
+		}
 		isHamburgerOn = !isHamburgerOn;
 	};
 
@@ -54,6 +61,25 @@
 			const menu = document.getElementById(menuId);
 			menu?.focus();
 		}
+	});
+
+	$effect(() => {
+		isDesktop = windowWidth >= 768;
+		// Update your menu state or other UI elements based on isDesktop
+	});
+
+	onMount(() => {
+		windowWidth = window.innerWidth;
+
+		const handleResize = () => {
+			windowWidth = window.innerWidth;
+		};
+
+		window.addEventListener('resize', handleResize);
+
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
 	});
 
 	onMount(() => {
@@ -99,14 +125,14 @@
 						aria-label={isHamburgerOn ? "Close menu" : "Open menu"}
 					>
 						{#if isHamburgerOn}
-							<Icon size="16" color="lightGreen" src={TrOutlineMenu2} />
+							<Icon size="16" color="var(--text)" src={TrOutlineX} />
 						{:else}
 							<Icon size="16" color="var(--text)" src={TrOutlineMenu2} />
 						{/if}
 					</button>
 				</div>
 
-				<div class="menu">
+				<div class="menu" class:isAnimated>
 					<nav
 						id={menuId}
 						aria-label="Main menu"
@@ -115,17 +141,17 @@
 					>
 						<a
 							href="{base}/thoughts"
-							tabindex={isHamburgerOn ? 0 : -1}
+							tabindex={isTabbingAvailable ? 0 : -1}
 							aria-current={$page.url.pathname === '/thoughts' ? 'page' : undefined}
 						>blog</a>
 						<a
 							href="{base}/news-archive"
-							tabindex={isHamburgerOn ? 0 : -1}
+							tabindex={isTabbingAvailable ? 0 : -1}
 							aria-current={$page.url.pathname === '/news-archive' ? 'page' : undefined}
 						>news archive</a>
 						<a
 							href="{base}/good-read"
-							tabindex={isHamburgerOn ? 0 : -1}
+							tabindex={isTabbingAvailable ? 0 : -1}
 							aria-current={$page.url.pathname === '/good-read' ? 'page' : undefined}
 						>good read</a>
 					</nav>
@@ -135,13 +161,13 @@
 							type="button"
 							class={`clean ${isGridOn ? 'on' : ''}`}
 							onclick={toggleGrid}
-							tabindex={isHamburgerOn ? 0 : -1}
+							tabindex={isTabbingAvailable ? 0 : -1}
 						>
 						<span>
 							<Icon size="14" color="var(--text)" src={TrOutlineGrid3x3} />
 						</span>
 						</button>
-						<ThemeSwitcher isMenuOpen={isHamburgerOn} />
+						<ThemeSwitcher isMenuOpen={isTabbingAvailable} />
 					</div>
 				</div>
 
@@ -174,9 +200,7 @@
     grid-template-areas:
 		"a c"
 		"b b";
-    /*display: flex;
-    justify-content: space-between;
-    align-items: center;*/
+
     a {
       color: var(--text);
       text-decoration: none;
@@ -208,15 +232,25 @@
 
   /* HEADER MENU: MOBILE*/
   header {
+    --navTop: 56px;
+    position: relative;
+
     .menu {
-      transition: none; /* since I use animation remove this */
-      transform: translate3d(-110%, 100%, 0);
+      position: absolute;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: absolute;
       width: 100%;
-      background: red;
+			padding: 0 0 0 1rem;
+      transform: translate3d(110%, var(--navTop), 0);
+      transition: none;
+      background: var(--background-color);
+			box-shadow: 0 0 1px 0 var(--text);
+      visibility: hidden;
+
+      &.isAnimated {
+        visibility: visible;
+      }
     }
 
     &.slideMenuIn .menu {
@@ -230,7 +264,12 @@
 
   nav {
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
+
+    a {
+      display: block;
+      padding: 0.4rem 0;
+    }
   }
 
   .settings {
@@ -287,11 +326,59 @@
     }
   }
 
+  /* HEADER MENU: > 500 | 31.25rem */
+  @media(min-width: 31.25rem) {
+    .menu {
+      --navTop: 24px;
+    }
+
+    nav {
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+
+  /* HEADER MENU: Full Size > 768 | 48rem */
+  @media(min-width: 48rem) {
+    header {
+      grid-template-areas:
+		"a b";
+
+      .menu {
+        --navTop: 24px;
+        position: relative;
+				padding: 0;
+        visibility: visible;
+        transform: none;
+        background: none;
+        animation: none;
+				box-shadow: none;
+      }
+
+      &.slideMenuIn .menu {
+        animation: none;
+      }
+
+      &:not(.slideMenuIn) .menu {
+        animation: none;
+      }
+    }
+
+    nav {
+      flex-direction: row;
+      gap: 2rem;
+    }
+
+    .hamburger {
+      display: none;
+    }
+  }
+
   /* Prevent hidden menu from receiving focus */
-  nav[aria-hidden="true"] {
+  /*nav[aria-hidden="true"] {
     visibility: hidden;
     opacity: 0;
-  }
+  }*/
 
   nav[aria-hidden="false"] {
     visibility: visible;
@@ -312,31 +399,31 @@
 
   @keyframes slideInWithBounce {
     0% {
-      transform: translate3d(-110%, 100%, 0);
+      transform: translate3d(-110%, var(--navTop), 0);
     }
     60% {
-      transform: translate3d(6%, 100%, 0);
+      transform: translate3d(4%, var(--navTop), 0);
     }
     80% {
-      transform: translate3d(-3%, 100%, 0);
+      transform: translate3d(-2%, var(--navTop), 0);
     }
     100% {
-      transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, var(--navTop), 0);
     }
   }
 
   @keyframes slideOutWithBounce {
     0% {
-      transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, var(--navTop), 0);
     }
     20% {
-      transform: translate3d(6%, 100%, 0);
+      transform: translate3d(4%, var(--navTop), 0);
     }
     40% {
-      transform: translate3d(-3%, 100%, 0);
+      transform: translate3d(-2%, var(--navTop), 0);
     }
     100% {
-      transform: translate3d(-110%, 100%, 0);
+      transform: translate3d(-110%, var(--navTop), 0);
     }
   }
 </style>
