@@ -11,6 +11,7 @@
 	import '@fontsource/frank-ruhl-libre/700.css';
 	import { onMount } from 'svelte';
 	import { afterNavigate } from '$app/navigation';
+	import { debounce } from '$lib/utils/debounce';
 
 	let { children } = $props();
 
@@ -71,9 +72,9 @@
 	onMount(() => {
 		windowWidth = window.innerWidth;
 
-		const handleResize = () => {
+		const handleResize = debounce(() => {
 			windowWidth = window.innerWidth;
-		};
+		}, 250);
 
 		window.addEventListener('resize', handleResize);
 

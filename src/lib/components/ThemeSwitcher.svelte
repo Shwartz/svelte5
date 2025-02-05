@@ -10,8 +10,6 @@
 	}
 
 	let {isMenuOpen = false}: ThemeSwitcherProps = $props();
-	console.log('isMenuOpen: ', isMenuOpen);
-
 	const getPreferredColorScheme = () => {
 		if (browser) {
 			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';

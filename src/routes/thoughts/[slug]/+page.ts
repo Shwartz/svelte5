@@ -2,7 +2,7 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = ({ params }) => {
   const { slug } = params;
-  console.log({ slug });
+  //console.log({ slug });
   return { slug };
 };
 

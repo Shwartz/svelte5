@@ -14,27 +14,26 @@
 		y: 0
 	});
 
-	function handleMouseEnter(event) {
-		const target = event.target.firstChild;
+	function handleMouseEnter(event: MouseEvent) {
+		const target = event.target?.firstChild;
 		tooltip.content = target.getAttribute('title'); // Get content from title attribute
-		console.log(tooltip.content);
 		if (tooltip.content) {
 			target.removeAttribute('title'); // Prevent default browser tooltip
 			tooltip.visible = true;
-			event.target.setAttribute('data-tooltip-visible', 'true');
+			event.target?.setAttribute('data-tooltip-visible', 'true');
 		}
 	}
 
-	function handleMouseLeave(event) {
-		const target = event.target.firstChild;
+	function handleMouseLeave(event: MouseEvent) {
+		const target = event.target?.firstChild;
 		if (tooltip.content) {
 			target.setAttribute('title', tooltip.content); // Restore title attribute
 			tooltip.visible = false;
-			event.event.target.removeAttribute('data-tooltip-visible');
+			event.target?.removeAttribute('data-tooltip-visible');
 		}
 	}
 
-	function handleMouseMove(event) {
+	function handleMouseMove(event: MouseEvent) {
 		tooltip.x = event.clientX + 10; // Offset by 10px
 		tooltip.y = event.clientY + 10; // Offset by 10px
 	}
