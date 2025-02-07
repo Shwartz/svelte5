@@ -57,7 +57,7 @@
 	nec. Vestibulum ante ipsum primis in faucibus orci luctus.</p>
 <div class="headerTags">
 	<div class="flex">
-		<div>{postCount} {postCount === 1 ? 'item' : 'items'}</div>
+		<div class="counter">{postCount} {postCount === 1 ? 'item' : 'items'}</div>
 		<div class="filter">
 			{#each allTags as tag}
 				<button
@@ -77,6 +77,8 @@
 <style lang="scss">
   .headerTags {
     display: flex;
+		flex-wrap: wrap;
+		gap: 1.5rem;
     justify-content: space-between;
     padding: 4rem 0 1.5rem;
 		border-bottom: 1px dotted var(--grid-color);
@@ -90,6 +92,11 @@
     display: flex;
     gap: 1rem;
   }
+
+	.counter {
+		min-width: px-to-rem(68px);
+		text-align: left;
+	}
 
   .frankTitle {
     font-size: 9rem;
@@ -108,6 +115,14 @@
     margin: 0;
     cursor: pointer;
   }
+
+  :global(.btnTag:hover > *) {
+    border: 1px solid var(--textLight);
+  }
+
+  /*:global(.btnTag:active > *) {
+    border: 1px solid var(--text);
+  }*/
 
   .filter {
     display: flex;

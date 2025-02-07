@@ -1,11 +1,15 @@
 <script lang="ts">
-  import {type CategoryType, getCategoryColor} from '$lib/utils/categoryColors';
+	import { type CategoryType, getCategoryColor } from '$lib/utils/categoryColors';
 
-  export let blogCategory: CategoryType = 'JavaScript';
+	export let blogCategory: CategoryType = 'JavaScript';
 	export let active: boolean = false;
 </script>
 
-<span class="tag" class:active={active} style:background-color={getCategoryColor(blogCategory)}>
+<span
+  class="tag"
+  class:active={active}
+  style:background-color={getCategoryColor(blogCategory)}
+>
   {blogCategory}
 </span>
 
@@ -16,10 +20,14 @@
         border-radius: 1em;
         color: black;
         font-size: 0.75rem;
+        border: 1px solid rgba(255, 255, 255, 0);
     }
 
     .active {
-        outline: 1px solid red;
-        box-shadow: 1px 1px 3px black inset;
+        border: 1px solid var(--text);
+    }
+
+    :global(html[data-theme='dark'] .active) {
+        box-shadow: 1px 1px 3px var(--background-color) inset;
     }
 </style>
