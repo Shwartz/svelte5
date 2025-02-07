@@ -17,7 +17,7 @@ export const postsArr = [
 	{
 		url: `${base}/thoughts/how-to-build-css-layout-using-flexbox`,
 		title: 'How to create CSS Layout using Flexbox',
-		description: 'Should you rely on CSS frameworks like Bootstrap, TailwindCSS, or others?',
+		description: 'So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should you rely on CSS frameworks like Bootstrap, TailwindCSS, or others?',
 		tags: ['CSS'],
 		publishedDate: 'June, 2024',
 		readingTime: '10 min read',

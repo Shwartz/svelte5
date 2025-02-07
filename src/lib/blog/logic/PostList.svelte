@@ -43,9 +43,11 @@
 		<Tooltip color={getFirstTagColour(tags as CategoryType[])}>
 			<a href="{url}" title="{title}">
 				<section class="post" style="view-transition-name: post-{index}">
-					<div class="visual"
-							 style="background-color: {getFirstTagColour(tags as CategoryType[])}; view-transition-name: visual-{index}">
-						<Visual />
+					<div class="visualWrap">
+						<div class="visual"
+								 style="background-color: {getFirstTagColour(tags as CategoryType[])}; view-transition-name: visual-{index}">
+							<Visual />
+						</div>
 					</div>
 					<div class="content" style="view-transition-name: content-{index}">
 						<div class="icons" style="view-transition-name: icons-{index}">
@@ -87,9 +89,45 @@
     }
   }
 
+	/* MOBILE VIEW: for all the same */
+	.post {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.visualWrap {
+		width: 100%;
+	}
+
+	.content {
+		width: 100%;
+	}
+
+	@media(min-width: 37.5rem) {
+    .visualWrap {
+      width: 74%;
+      align-self: flex-start;
+    }
+	}
+
+	@media(min-width: 48rem) {
+		.post {
+			flex-direction: row;
+			align-items: normal;
+		}
+
+		.content {
+			width: 50%;
+		}
+
+		.visualWrap {
+			width: 50%;
+		}
+	}
+
   /* EXPANDED: General styles, Expand as default */
   .post {
-    display: flex;
     gap: 1.5rem;
     margin-top: 1.5rem;
     padding-bottom: 1.5rem;
@@ -111,7 +149,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50%;
+    width: 100%;
     aspect-ratio: 13/8;
     /*background: #f9e4b2;*/
   }
@@ -119,7 +157,7 @@
   .content {
     display: grid;
     align-items: start;
-    width: 50%;
+    gap: 1rem;
     grid-template-areas:
 			'a'
 			'b'
@@ -181,16 +219,39 @@
     .content {
       width: 100%;
       display: grid;
-      gap: 0.5rem 1rem;
+			padding-top: 0;
+      gap: 1rem 1.5rem;
       grid-template-columns: 1fr auto;
       grid-template-areas:
+			"a"
+			"b"
+			"c"
+			"d";
+    }
+
+    .icons {
+      display: flex;
+      flex-direction: row;
+    }
+
+    @media(min-width: 48rem) {
+			.content {
+        grid-template-areas:
 			"b b"
 			"c a"
 			"d d";
-    }
+			}
 
-    .post {
-      flex-direction: row;
+      .visualWrap {
+        width: 32%;
+        min-width: 250px;
+      }
+
+      .icons {
+        flex-direction: column;
+        justify-content: center;
+        width: 9rem;
+      }
     }
 
     h1 {
@@ -215,13 +276,9 @@
 
     /* Icons */
     .icons {
-      display: flex;
-      flex-direction: column;
       align-items: flex-start;
       gap: 0.2rem;
       flex: 0 0 160px;
-      justify-content: center;
-      width: 9rem;
 
       > div {
         display: flex;
