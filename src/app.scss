@@ -19,7 +19,7 @@ body {
   min-height: 100vh;
 }
 
-.grid {
+.gridLines {
   --col-count: 2;
   --gap: 1.5rem;
   --line-width: 1px;
@@ -89,7 +89,7 @@ button.clean {
 }
 
 @media (min-width: 500px) {
-  .grid {
+  .gridLines {
     --col-count: 4;
   }
 }
@@ -99,7 +99,7 @@ button.clean {
     padding: 1rem 2rem;
   }
 
-  .grid {
+  .gridLines {
     --col-count: 6;
   }
 }
@@ -109,7 +109,7 @@ button.clean {
     padding: 1rem 4rem;
   }
 
-  .grid {
+  .gridLines {
     --col-count: 8;
   }
 }

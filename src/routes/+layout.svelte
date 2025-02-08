@@ -112,9 +112,9 @@
 
 <div class="page">
 	<div class="container">
-		<div class={`grid ${isGridOn ? '' : 'gridOff'}`}>
-			<header >
-				<div id="topHead" class={`headerWrap ${isHamburgerOn ? 'slideMenuIn' : ''}`}>
+		<div class='gridLines' class:gridOff={!isGridOn}>
+			<header>
+				<div id="topHead" class='headerWrap' class:slideMenuIn={isHamburgerOn}>
 					<a href="{base}/" class="me">Andris Švarcs</a>
 					<div class="hamburger">
 						<button
@@ -132,7 +132,6 @@
 							{/if}
 						</button>
 					</div>
-
 					<div class="menu" class:isAnimated>
 						<nav
 							id={menuId}
@@ -173,7 +172,7 @@
 					</div>
 				</div>
 			</header>
-			<div>
+			<div class="content">
 				{@render children()}
 			</div>
 			<Footer />
@@ -190,15 +189,25 @@
     font-family: "Frank Ruhl Libre", serif;
   }
 
-	header {
-    border-bottom: 1px dotted var(--grid-color);
+	.gridLines {
+		display: flex;
+		flex-direction: column;
+
 	}
+
+	.content {
+		flex-grow: 1;
+	}
+
+  header {
+    border-bottom: 1px dotted var(--grid-color);
+  }
 
   /* HEADER MENU */
   .headerWrap {
     display: grid;
     align-items: center;
-		margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
     border-bottom: 1px dotted var(--grid-color);
     grid-template-areas:
 		"a c"
@@ -219,9 +228,9 @@
     }
   }
 
-	:global(.gridOff) :is(header, .headerWrap) {
-			border-bottom-color: rgba(0,0,0,0);
-	}
+  :global(.gridOff) :is(header, .headerWrap) {
+    border-bottom-color: rgba(0, 0, 0, 0);
+  }
 
   .me {
     grid-area: a;

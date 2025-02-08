@@ -123,7 +123,7 @@ transform: translateY(-1rem)`;
     <meta property="twitter:description" content="{description}"/>
     <meta name="robots" content="index,follow"/>
 </svelte:head>
-
+<!-- svelte-ignore css-unused-selector -->
 <section class="medium">
     <div>
         <time datetime="03-2024">March, 2024</time>
