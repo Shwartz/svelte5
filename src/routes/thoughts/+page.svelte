@@ -120,10 +120,6 @@
     border: 1px solid var(--textLight);
   }
 
-  /*:global(.btnTag:active > *) {
-    border: 1px solid var(--text);
-  }*/
-
   .filter {
     display: flex;
     gap: 4px;
