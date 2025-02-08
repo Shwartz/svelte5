@@ -12,6 +12,7 @@
 	import { onMount } from 'svelte';
 	import { afterNavigate } from '$app/navigation';
 	import { debounce } from '$lib/utils/debounce';
+	import Footer from '$lib/components/Footer.svelte';
 
 	let { children } = $props();
 
@@ -113,9 +114,7 @@
 	<div class="container">
 		<div class={`grid ${isGridOn ? '' : 'gridOff'}`}>
 			<header id="topHead" class={isHamburgerOn ? 'slideMenuIn' : ''}>
-
 				<a href="{base}/" class="me">Andris Švarcs</a>
-
 				<div class="hamburger">
 					<button
 						onclick={toggleHamburger}
@@ -176,11 +175,7 @@
 			<div>
 				{@render children()}
 			</div>
-			<footer>
-				<div>One</div>
-				<div>Two</div>
-				<div>Three</div>
-			</footer>
+			<Footer />
 		</div>
 	</div>
 </div>
@@ -384,10 +379,6 @@
   nav[aria-hidden="false"] {
     visibility: visible;
     opacity: 1;
-  }
-
-  footer {
-    margin-top: auto;
   }
 
   .gridOff {
