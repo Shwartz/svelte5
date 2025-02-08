@@ -113,64 +113,65 @@
 <div class="page">
 	<div class="container">
 		<div class={`grid ${isGridOn ? '' : 'gridOff'}`}>
-			<header id="topHead" class={isHamburgerOn ? 'slideMenuIn' : ''}>
-				<a href="{base}/" class="me">Andris Švarcs</a>
-				<div class="hamburger">
-					<button
-						onclick={toggleHamburger}
-						type="button"
-						class="clean"
-						aria-expanded={isHamburgerOn}
-						aria-controls={menuId}
-						aria-label={isHamburgerOn ? "Close menu" : "Open menu"}
-					>
-						{#if isHamburgerOn}
-							<Icon size="16" color="var(--text)" src={TrOutlineX} />
-						{:else}
-							<Icon size="16" color="var(--text)" src={TrOutlineMenu2} />
-						{/if}
-					</button>
-				</div>
-
-				<div class="menu" class:isAnimated>
-					<nav
-						id={menuId}
-						aria-label="Main menu"
-						class={isHamburgerOn ? 'slideMenuIn' : ''}
-						aria-hidden={!isHamburgerOn}
-					>
-						<a
-							href="{base}/thoughts"
-							tabindex={isTabbingAvailable ? 0 : -1}
-							aria-current={$page.url.pathname === '/thoughts' ? 'page' : undefined}
-						>blog</a>
-						<a
-							href="{base}/news-archive"
-							tabindex={isTabbingAvailable ? 0 : -1}
-							aria-current={$page.url.pathname === '/news-archive' ? 'page' : undefined}
-						>news archive</a>
-						<a
-							href="{base}/good-read"
-							tabindex={isTabbingAvailable ? 0 : -1}
-							aria-current={$page.url.pathname === '/good-read' ? 'page' : undefined}
-						>good read</a>
-					</nav>
-
-					<div class="settings">
+			<header >
+				<div id="topHead" class={`headerWrap ${isHamburgerOn ? 'slideMenuIn' : ''}`}>
+					<a href="{base}/" class="me">Andris Švarcs</a>
+					<div class="hamburger">
 						<button
+							onclick={toggleHamburger}
 							type="button"
-							class={`clean ${isGridOn ? 'on' : ''}`}
-							onclick={toggleGrid}
-							tabindex={isTabbingAvailable ? 0 : -1}
+							class="clean"
+							aria-expanded={isHamburgerOn}
+							aria-controls={menuId}
+							aria-label={isHamburgerOn ? "Close menu" : "Open menu"}
 						>
+							{#if isHamburgerOn}
+								<Icon size="16" color="var(--text)" src={TrOutlineX} />
+							{:else}
+								<Icon size="16" color="var(--text)" src={TrOutlineMenu2} />
+							{/if}
+						</button>
+					</div>
+
+					<div class="menu" class:isAnimated>
+						<nav
+							id={menuId}
+							aria-label="Main menu"
+							class={isHamburgerOn ? 'slideMenuIn' : ''}
+							aria-hidden={!isHamburgerOn}
+						>
+							<a
+								href="{base}/thoughts"
+								tabindex={isTabbingAvailable ? 0 : -1}
+								aria-current={$page.url.pathname === '/thoughts' ? 'page' : undefined}
+							>blog</a>
+							<a
+								href="{base}/news-archive"
+								tabindex={isTabbingAvailable ? 0 : -1}
+								aria-current={$page.url.pathname === '/news-archive' ? 'page' : undefined}
+							>news archive</a>
+							<a
+								href="{base}/good-read"
+								tabindex={isTabbingAvailable ? 0 : -1}
+								aria-current={$page.url.pathname === '/good-read' ? 'page' : undefined}
+							>good read</a>
+						</nav>
+
+						<div class="settings">
+							<button
+								type="button"
+								class={`clean ${isGridOn ? 'on' : ''}`}
+								onclick={toggleGrid}
+								tabindex={isTabbingAvailable ? 0 : -1}
+							>
 						<span>
 							<Icon size="14" color="var(--text)" src={TrOutlineGrid3x3} />
 						</span>
-						</button>
-						<ThemeSwitcher isMenuOpen={isTabbingAvailable} />
+							</button>
+							<ThemeSwitcher isMenuOpen={isTabbingAvailable} />
+						</div>
 					</div>
 				</div>
-
 			</header>
 			<div>
 				{@render children()}
@@ -189,10 +190,16 @@
     font-family: "Frank Ruhl Libre", serif;
   }
 
+	header {
+    border-bottom: 1px dotted var(--grid-color);
+	}
+
   /* HEADER MENU */
-  header {
+  .headerWrap {
     display: grid;
     align-items: center;
+		margin-bottom: 1.5rem;
+    border-bottom: 1px dotted var(--grid-color);
     grid-template-areas:
 		"a c"
 		"b b";
@@ -212,6 +219,10 @@
     }
   }
 
+	:global(.gridOff) :is(header, .headerWrap) {
+			border-bottom-color: rgba(0,0,0,0);
+	}
+
   .me {
     grid-area: a;
   }
@@ -227,7 +238,7 @@
   }
 
   /* HEADER MENU: MOBILE*/
-  header {
+  .headerWrap {
     --navTop: 56px;
     position: relative;
 
@@ -237,11 +248,11 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-			padding: 0 0 0 1rem;
+      padding: 0 0 0 1rem;
       transform: translate3d(110%, var(--navTop), 0);
       transition: none;
       background: var(--background-color);
-			box-shadow: 0 0 1px 0 var(--text);
+      box-shadow: 0 0 1px 0 var(--text);
       visibility: hidden;
 
       &.isAnimated {
@@ -336,19 +347,19 @@
 
   /* HEADER MENU: Full Size > 768 | 48rem */
   @media(min-width: 48rem) {
-    header {
+    .headerWrap {
       grid-template-areas:
 		"a b";
 
       .menu {
         --navTop: 24px;
         position: relative;
-				padding: 0;
+        padding: 0;
         visibility: visible;
         transform: none;
         background: none;
         animation: none;
-				box-shadow: none;
+        box-shadow: none;
       }
 
       &.slideMenuIn .menu {
