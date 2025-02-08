@@ -1,17 +1,16 @@
 <script lang="ts">
-	import { TrOutlineGrid3x3, TrOutlineMenu2, TrOutlineX } from 'svelte-icons-pack/tr';
-	import { Icon } from 'svelte-icons-pack';
-	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
-	import { onMount } from 'svelte';
+	import { onMount, getContext } from 'svelte';
 	import { base } from '$app/paths';
-	import { afterNavigate } from '$app/navigation';
-	import { debounce } from '$lib/utils/debounce.js';
 	import { page } from '$app/stores';
+	import { afterNavigate } from '$app/navigation';
+	import { Icon } from 'svelte-icons-pack';
+	import { TrOutlineGrid3x3, TrOutlineMenu2, TrOutlineX } from 'svelte-icons-pack/tr';
+	import { debounce } from '$lib/utils/debounce.js';
+	import ThemeSwitcher from '$lib/components/ThemeSwitcher.svelte';
+	import type { LayoutActions } from '$lib/types/layout-context';
 
-	const { isGridOn, toggleGrid } = $props();
-	console.log({isGridOn});
-	console.log({toggleGrid});
-
+	// Retrieve context from any parent layout, routes/+layout.svelte
+	const { toggleGrid, isGridOn } = getContext<LayoutActions>('layout-actions');
 	let isHamburgerOn = $state(false);
 	let isAnimated = $state(false);
 	let isDesktop = $state(false);

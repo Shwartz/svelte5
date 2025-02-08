@@ -5,6 +5,7 @@
 	import Tag from '$lib/components/snippets/Tag.svelte';
 	import PostList from '$lib/blog/logic/PostList.svelte';
 	import { postsArr } from '$lib/blog/logic/postsConfig';
+	import Header from '$lib/components/Header.svelte';
 
 	let compact = $state(false);
 	let checked = $state(false);
@@ -51,41 +52,45 @@
 		});
 	}
 </script>
-
-<h1 class="frankTitle">blog</h1>
-<p class="intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consectetur semper magna, quis consequat orci commodo
-	nec. Vestibulum ante ipsum primis in faucibus orci luctus.</p>
-<div class="headerTags">
-	<div class="flex">
-		<div class="counter">{postCount} {postCount === 1 ? 'item' : 'items'}</div>
-		<div class="filter">
-			{#each allTags as tag}
-				<button
-					onclick={() => handleFilterClick(tag)}
-					class="btnTag"
-				>
-					<Tag active={selectedFilter === tag} blogCategory={tag} />
-				</button>
-			{/each}
+<div class="content">
+	<Header />
+	<h1 class="frankTitle">blog</h1>
+	<p class="intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consectetur semper magna, quis
+		consequat orci commodo
+		nec. Vestibulum ante ipsum primis in faucibus orci luctus.</p>
+	<div class="headerTags">
+		<div class="flex">
+			<div class="counter">{postCount} {postCount === 1 ? 'item' : 'items'}</div>
+			<div class="filter">
+				{#each allTags as tag}
+					<button
+						onclick={() => handleFilterClick(tag)}
+						class="btnTag"
+					>
+						<Tag active={selectedFilter === tag} blogCategory={tag} />
+					</button>
+				{/each}
+			</div>
 		</div>
+		<ToggleCompact {checked} toggleCompact={toggleCompact} />
 	</div>
-	<ToggleCompact {checked} toggleCompact={toggleCompact} />
+
+	<PostList {compact} {selectedFilter} onCountChange={handlePostCountChange} />
 </div>
 
-<PostList {compact} {selectedFilter} onCountChange={handlePostCountChange} />
 
 <style lang="scss">
   .headerTags {
     display: flex;
-		flex-wrap: wrap;
-		gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
     justify-content: space-between;
     padding: 4rem 0 1.5rem;
-		border-bottom: 1px dotted var(--grid-color);
+    border-bottom: 1px dotted var(--grid-color);
   }
 
   :global(.gridOff) .headerTags {
-    border-bottom-color: rgba(0,0,0,0);
+    border-bottom-color: rgba(0, 0, 0, 0);
   }
 
   .flex {
@@ -93,10 +98,10 @@
     gap: 1rem;
   }
 
-	.counter {
-		min-width: px-to-rem(68px);
-		text-align: left;
-	}
+  .counter {
+    min-width: px-to-rem(68px);
+    text-align: left;
+  }
 
   .frankTitle {
     font-size: 9rem;
@@ -104,9 +109,9 @@
     line-height: normal;
   }
 
-	.intro {
-  	width: 100%;
-	}
+  .intro {
+    width: 100%;
+  }
 
   .btnTag {
     border: none;
@@ -125,11 +130,11 @@
     gap: 4px;
   }
 
-	@media (min-width: 600px) {
-		.intro {
-			width: 75%;
-		}
-	}
+  @media (min-width: 600px) {
+    .intro {
+      width: 75%;
+    }
+  }
 
   @media (min-width: 1200px) {
     .intro {

@@ -1,14 +1,16 @@
 <script lang="ts">
 	import Header from '$lib/components/Header.svelte';
+
+	let { children } = $props();
 </script>
 
 <div class="content">
 	<Header/>
-	<h1>Good Read</h1>
+	{@render children()}
 </div>
 
 <style lang="scss">
-  .content {
-    flex-grow: 1;
-  }
+	.content {
+			flex-grow: 1;
+	}
 </style>

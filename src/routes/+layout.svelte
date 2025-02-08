@@ -6,7 +6,7 @@
 	import '@fontsource-variable/inter';
 	import '@fontsource/frank-ruhl-libre/700.css';
 	import Footer from '$lib/components/Footer.svelte';
-	import Header from '$lib/components/Header.svelte';
+	import { setContext } from 'svelte';
 
 	let { children } = $props();
 
@@ -15,7 +15,19 @@
 	if (browser && localStorage.getItem(GRID_STATE) !== null) {
 		initialGridState = JSON.parse(localStorage.getItem(GRID_STATE) ?? 'false');
 	}
+
 	let isGridOn = $state(initialGridState);
+	const toggleGrid = () => {
+		isGridOn = !isGridOn;
+		localStorage.setItem(GRID_STATE, JSON.stringify(isGridOn));
+	};
+
+	const layoutActions = $state({
+		isGridOn: true,
+		toggleGrid
+	});
+
+	setContext('layout-actions', layoutActions);
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
@@ -27,11 +39,6 @@
 			});
 		});
 	});
-
-	const toggleGrid = () => {
-		isGridOn = !isGridOn;
-		localStorage.setItem(GRID_STATE, JSON.stringify(isGridOn));
-	};
 </script>
 
 <svelte:head>
@@ -41,10 +48,9 @@
 <div class="page">
 	<div class="container">
 		<div class='gridLines' class:gridOff={!isGridOn}>
-			<Header isGridOn toggleGrid={toggleGrid} />
-			<div class="content">
+			<!--<div class="content">-->
 				{@render children()}
-			</div>
+			<!--</div>-->
 			<Footer />
 		</div>
 	</div>
@@ -60,15 +66,10 @@
     font-family: "Frank Ruhl Libre", serif;
   }
 
-	.gridLines {
-		display: flex;
-		flex-direction: column;
-
-	}
-
-	.content {
-		flex-grow: 1;
-	}
+  .gridLines {
+    display: flex;
+    flex-direction: column;
+  }
 
   header {
     border-bottom: 1px dotted var(--grid-color);
