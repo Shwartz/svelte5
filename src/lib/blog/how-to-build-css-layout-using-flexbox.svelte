@@ -408,7 +408,7 @@
   </div>
 </section>
 
-
+<!-- svelte-ignore css-unused-selector -->
 <style lang="scss">
   .color-palette {
     --min: 10ch;
