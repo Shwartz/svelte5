@@ -180,6 +180,7 @@
 	</div>
 </div>
 
+<!-- svelte-ignore css-unused-selector -->
 <style lang="scss">
   :global(body) {
     font-family: "Inter Variable", sans-serif;
