@@ -80,7 +80,8 @@
 		</span>
 </button>
 
-<style lang="scss">
+<!-- svelte-ignore css_unused_selector -->
+<style lang="scss" global>
   :global(html[data-theme='light'] .moon) {
     display: none;
   }

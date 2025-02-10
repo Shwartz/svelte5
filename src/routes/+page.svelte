@@ -69,7 +69,9 @@
 		</main>
 	</section>
 </div>
-<style lang="scss">
+
+<!-- svelte-ignore css_unused_selector -->
+<style lang="scss" global>
   .content {
     flex-grow: 1;
   }

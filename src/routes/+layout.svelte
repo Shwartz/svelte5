@@ -2,11 +2,11 @@
 	import { browser } from '$app/environment';
 	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
-	import '../app.scss';
 	import '@fontsource-variable/inter';
 	import '@fontsource/frank-ruhl-libre/700.css';
 	import Footer from '$lib/components/Footer.svelte';
 	import { setContext } from 'svelte';
+	import '../app.scss';
 
 	let { children } = $props();
 
@@ -56,8 +56,8 @@
 	</div>
 </div>
 
-<!-- svelte-ignore css-unused-selector -->
-<style lang="scss">
+<!-- svelte-ignore css_unused_selector -->
+<style lang="scss" global>
   :global(body) {
     font-family: "Inter Variable", sans-serif;
   }

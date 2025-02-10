@@ -55,7 +55,7 @@
 	{/if}
 </div>
 
-
+<!-- svelte-ignore css_unused_selector -->
 <style lang="scss">
   .tooltip {
     position: fixed;

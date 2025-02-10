@@ -78,7 +78,7 @@
 	<PostList {compact} {selectedFilter} onCountChange={handlePostCountChange} />
 </div>
 
-
+<!-- svelte-ignore css_unused_selector -->
 <style lang="scss">
   .headerTags {
     display: flex;

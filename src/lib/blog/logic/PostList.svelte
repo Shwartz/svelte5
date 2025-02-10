@@ -78,6 +78,7 @@
 	{/each}
 </div>
 
+<!-- svelte-ignore css_unused_selector -->
 <style lang="scss">
   .blog {
     a {

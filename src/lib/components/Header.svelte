@@ -138,6 +138,7 @@
 	</div>
 </header>
 
+<!-- svelte-ignore css_unused_selector -->
 <style lang="scss">
   /* HEADER MENU */
   .headerWrap {

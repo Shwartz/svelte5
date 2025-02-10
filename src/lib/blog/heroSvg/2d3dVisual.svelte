@@ -11,6 +11,8 @@
 		<FlexImg2 width="60%" />
 	</div>
 </div>
+
+<!-- svelte-ignore css_unused_selector -->
 <style lang="scss">
 	.imgHero {
 		display: grid;

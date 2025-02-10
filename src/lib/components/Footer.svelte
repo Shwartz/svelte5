@@ -35,6 +35,7 @@
 	</div>
 </footer>
 
+<!-- svelte-ignore css_unused_selector -->
 <style lang="scss">
   footer {
     margin-top: 6rem;

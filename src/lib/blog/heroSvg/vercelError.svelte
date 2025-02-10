@@ -5,6 +5,8 @@
 <div class="imgHero">
 	<FlexImg width="100%" className="test1" />
 </div>
+
+<!-- svelte-ignore css_unused_selector -->
 <style lang="scss">
   .imgHero :global(.path1),
   .imgHero :global(.path2) {
