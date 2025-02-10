@@ -102,7 +102,7 @@
 				id={menuId}
 				aria-label="Main menu"
 				class={isHamburgerOn ? 'slideMenuIn' : ''}
-				aria-hidden={!isHamburgerOn}
+				aria-hidden={!isHamburgerOn && !isDesktop}
 			>
 				<a
 					href="{base}/thoughts"

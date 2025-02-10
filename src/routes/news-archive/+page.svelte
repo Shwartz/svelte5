@@ -7,6 +7,7 @@
 	<h1>News Archive</h1>
 </div>
 
+<!-- svelte-ignore css_unused_selector -->
 <style lang="scss">
 	.content {
 		flex-grow: 1;
