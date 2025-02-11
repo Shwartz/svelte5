@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { pushState } from '$app/navigation';
 
 	const title = 'Lifespan | Post';
 	const description = 'Visual representation of life based on average 80 years';
@@ -39,7 +40,7 @@
 	function updateUrlParams(date: string) {
 		const url = new URL(window.location.href);
 		url.searchParams.set('birthday', date);
-		history.pushState({}, '', url);
+		pushState(url.toString(), {});
 	}
 
 	function handleDateChange(e: Event) {
