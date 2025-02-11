@@ -80,6 +80,10 @@
 
 <!-- svelte-ignore css_unused_selector -->
 <style lang="scss">
+  .content {
+    flex-grow: 1;
+  }
+
   .headerTags {
     display: flex;
     flex-wrap: wrap;

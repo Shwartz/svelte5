@@ -1,9 +1,20 @@
 import type { PageLoad } from './$types';
+import { postsArr } from '$lib/blog/logic/postsConfig';
 
 export const load: PageLoad = ({ params }) => {
-  const { slug } = params;
+  const post = postsArr.find(p => p.url.includes(params.slug));
   //console.log({ slug });
-  return { slug };
+  console.log({post});
+  return {
+    slug: params.slug,
+    postData: {
+      id: post?.id,
+      title: post?.title,
+      Visual: post?.Visual,
+      readingTime: post?.readingTime,
+      tags: post?.tags,
+    }
+  };
 };
 
 export function entries() {
