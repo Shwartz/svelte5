@@ -124,9 +124,8 @@ transform: translateY(-1rem)`;
     <meta name="robots" content="index,follow"/>
 </svelte:head>
 <!-- svelte-ignore css-unused-selector -->
-<section class="medium">
+<section class="post">
     <div>
-        <time datetime="03-2024">March, 2024</time>
 
         <p>2D and 3D animations provide developers with tools to manipulate an element on the screen, including
             <code>position</code>, <code>size</code>, <code>perspective</code> and <code>rotation</code>. </p>

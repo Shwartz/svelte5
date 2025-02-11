@@ -16,17 +16,15 @@
     <meta name="robots" content="index,follow"/>
 </svelte:head>
 
-<section class="medium">
+<section class="post">
     <div>
-        <time datetime="05-2023">May, 2023</time>
-
         <h3>Summary</h3>
         <p>The common pitfalls with CSS and different approaches to make sense of the project's design, front-end and
             maintenance. This is a more philosophical post where I overview my experience dealing with CSS and
             to find the best approach (methodology) for the project.</p>
     </div>
 </section>
-<section class="medium">
+<section class="post">
     <div>
         <img src={complicatedFrontend} alt="Comic complicated frontend" width="519px" height="480px"/>
         <p>I believe no Front-end developer manages to escape from using Bootstrap CSS in at least one project.

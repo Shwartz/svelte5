@@ -38,10 +38,8 @@ Error: The following Serverless Functions contain an invalid "runtime":
     <meta name="robots" content="index,follow"/>
 </svelte:head>
 
-<section class="medium">
+<section class="post">
     <div>
-        <time datetime="03-2024">March, 2024</time>
-
         <p>I’m a front-end developer and not very fancy on the server side. That being said, I spent some ten years
             managing my own Linux on DigitalOcean with WP blogs. When I say managing, it was more like doing some
             updates and maintenance only.</p>

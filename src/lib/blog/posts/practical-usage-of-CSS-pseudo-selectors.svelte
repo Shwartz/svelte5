@@ -87,11 +87,8 @@ a:not([href = "https://shvarcs.com"]) {
     <meta name="robots" content="index,follow"/>
 </svelte:head>
 
-<section class="medium">
+<section class="post">
     <div>
-        <time datetime="02-2024">February, 2024</time>
-
-
         <p>If you like me, you might come to get a quick overview to solve your specific problem, so here is a quick
             summary.</p>
 

@@ -17,10 +17,8 @@
 	<meta name="robots" content="index,follow" />
 </svelte:head>
 
-<section class="medium">
+<section class="post">
 	<div>
-		<time datetime="09-2022">September, 2022</time>
-
 		<h3>Summary</h3>
 		<p>The Svelte vs React argument is straightforward when the project requirements are clearly defined.</p>
 
