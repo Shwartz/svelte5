@@ -8,6 +8,7 @@
 	let PostContent: any;
 
 	onMount(() => {
+		tagState.id = id;
 		tagState.tagArr = tags;
 		tagState.title = title;
 		tagState.Visual = Visual;

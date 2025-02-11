@@ -39,18 +39,18 @@
 </script>
 
 <div class="blog" class:compact={compact} class:expanded={!compact}>
-	{#each filteredPosts() as { url, title, description, tags, publishedDate, readingTime, likes, Visual }, index}
+	{#each filteredPosts() as { url, title, description, tags, publishedDate, readingTime, likes, Visual, id }}
 		<Tooltip color={getFirstTagColour(tags as CategoryType[])}>
 			<a href="{url}" title="{title}">
-				<section class="post" style="view-transition-name: post-{index}">
+				<section class="post" style="view-transition-name: post-{id}">
 					<div class="visualWrap">
 						<div class="visual"
-								 style="background-color: {getFirstTagColour(tags as CategoryType[])}; view-transition-name: visual-{index}">
+								 style="background-color: {getFirstTagColour(tags as CategoryType[])}; view-transition-name: visual-{id}">
 							<Visual />
 						</div>
 					</div>
-					<div class="content" style="view-transition-name: content-{index}">
-						<div class="icons" style="view-transition-name: icons-{index}">
+					<div class="content" style="view-transition-name: content-{id}">
+						<div class="icons" style="view-transition-name: icons-{id}">
 							<div>
 								<Icon size="16" color="777777" src={TrOutlineCalendarMonth} />
 								<span>{publishedDate}</span>
@@ -64,7 +64,7 @@
 								<span>{likes}</span>
 							</div>
 						</div>
-						<h1 class="title">{title}</h1>
+						<h1 class="title" style="view-transition-name: title-{id}">{title}</h1>
 						<p class="intro truncate">{description}</p>
 						<div class="tags">
 							{#each tags as tag}
