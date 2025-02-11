@@ -32,8 +32,7 @@
 					</div>
 				</section>
 			</div>
-			<h1 style="view-transition-name: title-{id}">Real: {title}</h1>
-
+			<h1 style="view-transition-name: title-{id}">{title}</h1>
 		{/if}
 		{@render children()}
 	{/if}
@@ -57,4 +56,10 @@
       }
     }
   }
+
+	h1 {
+		margin: 4rem auto 0;
+		max-width: 43.2rem;
+		line-height: 3.5rem;
+	}
 </style>

@@ -13,6 +13,8 @@ export const load: PageLoad = ({ params }) => {
       Visual: post?.Visual,
       readingTime: post?.readingTime,
       tags: post?.tags,
+      publishedDate: post?.publishedDate,
+      likes: post?.likes,
     }
   };
 };

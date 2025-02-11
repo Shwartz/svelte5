@@ -2,9 +2,14 @@
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import { tagState } from '$lib/stores/tagState.svelte';
+	import Tag from '$lib/components/snippets/Tag.svelte';
+	import { type CategoryType } from '$lib/utils/categoryColors';
+	import { TrOutlineArrowBackUp, TrOutlineCalendarMonth, TrOutlineClock, TrOutlineHeart } from 'svelte-icons-pack/tr';
+	import { Icon } from 'svelte-icons-pack';
+	import { base } from '$app/paths';
 
 	export let data: PageData;
-	const { slug, postData: { id, Visual, readingTime, tags, title } } = data;
+	const { slug, postData: { id, Visual, readingTime, tags, title, publishedDate, likes } } = data;
 	let PostContent: any;
 
 	onMount(() => {
@@ -26,13 +31,37 @@
 	}
 </script>
 <!-- All this is added to children() prop in the +layout.svelte -->
-{#if id}
-	<p>ID: {id}</p>
-	<p>Reading Time: {readingTime}</p>
-	<p>{tags}</p>
+{#if tags && readingTime && publishedDate}
+	<div class="meta first">
+		<div class="tags">
+			{#each tags as tag}
+				<Tag blogCategory={tag as CategoryType} />
+			{/each}
+		</div>
+		<a href="{base}/thoughts" class="back">
+			<Icon size="20" color="777777" src={TrOutlineArrowBackUp} />
+			<span>back</span>
+		</a>
+	</div>
+	<div class="meta second">
+		<div class="icons" style="view-transition-name: icons-{id}">
+			<div>
+				<Icon size="16" color="777777" src={TrOutlineCalendarMonth} />
+				<span>{publishedDate}</span>
+			</div>
+			<div>
+				<Icon size="16" color="777777" src={TrOutlineClock} />
+				<span>{readingTime}</span>
+			</div>
+			<div>
+				<Icon size="16" color="777777" src={TrOutlineHeart} />
+				<span>{likes}</span>
+			</div>
+		</div>
+	</div>
 {/if}
 {#if PostContent}
-	<div class="content-wrapper" style={Visual ? 'padding-top: 0' : ''}>
+	<div>
 		<svelte:component this={PostContent} />
 	</div>
 {:else}
@@ -40,7 +69,44 @@
 {/if}
 
 <style lang="scss">
-  p {
-    color: red;
+	.meta {
+		display: flex;
+    max-width: 43.2rem;
+		margin: 2rem auto;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.first {
+		justify-content: space-between;
+	}
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+		align-items: center;
+  }
+
+	.back {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+  .icons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
+
+      span {
+        display: block;
+      }
+    }
   }
 </style>

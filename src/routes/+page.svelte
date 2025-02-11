@@ -19,7 +19,7 @@
 </script>
 
 <div class="content">
-	<Header/>
+	<Header />
 	<section class="hero">
 		<p>A product-minded deep dive into design, accessibility and SEO topics</p>
 	</section>

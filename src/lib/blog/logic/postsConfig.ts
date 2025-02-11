@@ -9,7 +9,7 @@ export const postsArr = [
 		url: `${base}/thoughts/lifespan`,
 		title: 'Lifespan',
 		description: 'How far you have come? Each dot represents one month on average 80 years lifespan',
-		tags: ['Random', 'CSS'],
+		tags: ['Random'],
 		publishedDate: 'January, 2025',
 		readingTime: '1 min read',
 		likes: '0 likes',

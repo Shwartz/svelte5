@@ -83,12 +83,16 @@
 </svelte:head>
 
 <section class="medium">
-	<div>
+	<!--<div>
 		<time datetime="01-2025">January, 2025</time>
-
-	</div>
+	</div>-->
 </section>
 <section class="medium">
+	<p>
+		Ever wondered how far you've come?
+		<br />
+		Enter your birthday and see for yourself in a sea of vibrant circles!
+		Each dot represents 1 month, and there are 960 dots (or 80 years)</p>
 	<div class="bDaySelect">
 		<label for="birthday">Enter your birthday</label>
 		<input
@@ -99,9 +103,6 @@
 			oninput={handleDateChange}
 			max={new Date().toISOString().split('T')[0]}
 		/>
-		<p>
-			Ever wondered how far you've come? Enter your birthday and see for yourself in a sea of vibrant circles! Each dot represents 1 month, and
-			there are 960 dots (or 80 years)</p>
 	</div>
 	<main>
 		<div class="life">
@@ -122,15 +123,15 @@
 </section>
 
 <style lang='scss'>
+  p {
+    max-width: 43.2rem;
+    line-height: 1.75rem;
+    margin: 0 auto 1rem;
+  }
+
   .bDaySelect {
     text-align: center;
-
-		p {
-			font-size: px-to-rem(14px);
-			max-width: 24rem;
-			line-height: 1.4rem;
-			margin: 0 auto 1rem;
-		}
+		margin: 2rem 0 1rem;
   }
 
   main {

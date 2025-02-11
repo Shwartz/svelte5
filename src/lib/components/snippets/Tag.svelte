@@ -6,9 +6,9 @@
 </script>
 
 <span
-  class="tag"
-  class:active={active}
-  style:background-color={getCategoryColor(blogCategory)}
+	class="tag"
+	class:active={active}
+	style:background-color={getCategoryColor(blogCategory)}
 >
   {blogCategory}
 </span>
@@ -21,7 +21,7 @@
         color: black;
         font-size: 0.75rem;
         border: 1px solid rgba(255, 255, 255, 0);
-      transition: 200ms box-shadow, 200ms border;
+        transition: 200ms box-shadow, 200ms border;
     }
 
     .active {
