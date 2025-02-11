@@ -6,13 +6,11 @@
 	import { onMount, type SvelteComponent } from 'svelte';
 
 	let id = $state<string>('');
-	let title = $state<string>('');
 	let tagArr = $state<Array<CategoryType>>(['CSS']);
 	let Visual = $state<SvelteComponent | unknown>();
 
 	onMount(() => {
 		id = tagState.id;
-		title = tagState.title;
 		tagArr = tagState.tagArr;
 		Visual = tagState.Visual;
 	});
@@ -24,7 +22,7 @@
 	<!-- Since using global class names for visual, need to add section.post for animations to work -->
 	{#if browser}
 		<Header />
-		{#if Visual && title && tagArr?.length > 0 && id}
+		{#if Visual && tagArr?.length > 0 && id}
 			<div style="background-color: {getFirstTagColour(tagArr)}">
 				<section class="visual post">
 					<div class="svgContainer" style="view-transition-name: visual-{id}">
@@ -32,7 +30,6 @@
 					</div>
 				</section>
 			</div>
-			<h1 style="view-transition-name: title-{id}">{title}</h1>
 		{/if}
 		{@render children()}
 	{/if}

@@ -32,33 +32,43 @@
 </script>
 <!-- All this is added to children() prop in the +layout.svelte -->
 {#if tags && readingTime && publishedDate}
-	<div class="meta first">
-		<div class="tags">
-			{#each tags as tag}
-				<Tag blogCategory={tag as CategoryType} />
-			{/each}
-		</div>
-		<a href="{base}/thoughts" class="back">
-			<Icon size="20" color="777777" src={TrOutlineArrowBackUp} />
-			<span>back</span>
-		</a>
-	</div>
-	<div class="meta second">
-		<div class="icons" style="view-transition-name: icons-{id}">
-			<div>
-				<Icon size="16" color="777777" src={TrOutlineCalendarMonth} />
-				<span>{publishedDate}</span>
+	<h1 style="view-transition-name: title-{id}">
+		<span>{title}</span>
+	</h1>
+
+	<div class="metaWrap">
+		<div class="meta first">
+			<div class="tags">
+				{#each tags as tag}
+					<Tag blogCategory={tag as CategoryType} />
+				{/each}
 			</div>
-			<div>
-				<Icon size="16" color="777777" src={TrOutlineClock} />
-				<span>{readingTime}</span>
-			</div>
-			<div>
-				<Icon size="16" color="777777" src={TrOutlineHeart} />
-				<span>{likes}</span>
-			</div>
+			<a href="{base}/thoughts" class="back">
+				<Icon size="20" color="777777" src={TrOutlineArrowBackUp} />
+				<span>back</span>
+			</a>
 		</div>
 	</div>
+
+	<div class="metaWrap">
+		<div class="meta second">
+			<div class="icons" style="view-transition-name: icons-{id}">
+				<div>
+					<Icon size="16" color="777777" src={TrOutlineCalendarMonth} />
+					<span>{publishedDate}</span>
+				</div>
+				<div>
+					<Icon size="16" color="777777" src={TrOutlineClock} />
+					<span>{readingTime}</span>
+				</div>
+				<div>
+					<Icon size="16" color="777777" src={TrOutlineHeart} />
+					<span>{likes}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
 {/if}
 {#if PostContent}
 	<div>
@@ -69,29 +79,68 @@
 {/if}
 
 <style lang="scss">
+  h1 {
+		margin-top: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px dotted var(--grid-color);
+    line-height: 3.5rem;
+
+    span {
+      display: flex;
+      max-width: var(--post-width);
+      margin-inline: auto;
+    }
+  }
+
+  .metaWrap {
+    border-bottom: 1px dotted var(--grid-color);
+
+		+ .metaWrap {
+      margin-bottom: 2rem;
+    }
+  }
+
 	.meta {
-		display: flex;
-    max-width: 43.2rem;
-		margin: 2rem auto;
-		align-items: center;
-		gap: 1rem;
+    padding: 1rem 0;
 	}
 
-	.first {
-		justify-content: space-between;
+  :global(.gridOff) :is(h1, .metaWrap) {
+    border-bottom-color: rgba(0, 0, 0, 0);
+  }
+
+	.second {
+    border-top: 1px solid rgba(0,0,0,0);
+    border-bottom: 1px solid rgba(0,0,0,0);
 	}
+
+  :global(.gridOff) .second {
+    border-top: 1px solid var(--text);
+    border-bottom: 1px solid var(--text);
+  }
+
+  .meta {
+    display: flex;
+    max-width: 43.2rem;
+    align-items: center;
+    gap: 1rem;
+    margin-inline: auto;
+  }
+
+  .first {
+    justify-content: space-between;
+  }
 
   .tags {
     display: flex;
     gap: 0.5rem;
-		align-items: center;
+    align-items: center;
   }
 
-	.back {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
+  .back {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
   .icons {
     display: flex;
