@@ -19,7 +19,7 @@
 <section class="medium">
     <div>
         <time datetime="05-2023">May, 2023</time>
-        <h1>How to deal with CSS</h1>
+
         <h3>Summary</h3>
         <p>The common pitfalls with CSS and different approaches to make sense of the project's design, front-end and
             maintenance. This is a more philosophical post where I overview my experience dealing with CSS and

@@ -127,7 +127,6 @@ transform: translateY(-1rem)`;
 <section class="medium">
     <div>
         <time datetime="03-2024">March, 2024</time>
-        <h1>2D and 3D animations using CSS with interactive examples</h1>
 
         <p>2D and 3D animations provide developers with tools to manipulate an element on the screen, including
             <code>position</code>, <code>size</code>, <code>perspective</code> and <code>rotation</code>. </p>

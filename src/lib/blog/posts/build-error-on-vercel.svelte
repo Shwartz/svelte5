@@ -41,7 +41,6 @@ Error: The following Serverless Functions contain an invalid "runtime":
 <section class="medium">
     <div>
         <time datetime="03-2024">March, 2024</time>
-        <h1>Build error on Vercel</h1>
 
         <p>I’m a front-end developer and not very fancy on the server side. That being said, I spent some ten years
             managing my own Linux on DigitalOcean with WP blogs. When I say managing, it was more like doing some

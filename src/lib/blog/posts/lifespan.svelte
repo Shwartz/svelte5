@@ -85,7 +85,7 @@
 <section class="medium">
 	<div>
 		<time datetime="01-2025">January, 2025</time>
-		<h1>Lifespan</h1>
+
 	</div>
 </section>
 <section class="medium">

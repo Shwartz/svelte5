@@ -31,7 +31,7 @@
     ex21,
     ex22,
     ex23
-  } from "$lib/blog/2024-06-css-layout/sourceExamples";
+  } from "$lib/blog/2024-06-css-layout/sourceExamples.js";
 
   const title = "How to create CSS Layout using Flexbox | Post";
   const description = "Explaining advanced layout techniques with step-by-step simple examples using CSS Flexbox";
@@ -51,7 +51,7 @@
 <section class="medium">
   <div>
     <time datetime="06-2024">June, 2024</time>
-    <h1 id="scrollTop">How to create CSS Layout using Flexbox</h1>
+
     <p>So, you have your first mockup or design in your hands, but how do you translate it to HTML and CSS? Should you
       rely on CSS frameworks like Bootstrap, TailwindCSS, or others? No matter your choice, it would benefit you to
       understand the mechanics behind the layout.</p>

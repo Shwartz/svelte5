@@ -90,7 +90,7 @@ a:not([href = "https://shvarcs.com"]) {
 <section class="medium">
     <div>
         <time datetime="02-2024">February, 2024</time>
-        <h1>Practical usage of CSS pseudo-class selectors is(), where(), has() and not()</h1>
+
 
         <p>If you like me, you might come to get a quick overview to solve your specific problem, so here is a quick
             summary.</p>

@@ -17,7 +17,7 @@
 
 	async function loadContent() {
 		try {
-			const content = await import(`$lib/blog/${slug}.svelte`);
+			const content = await import(`$lib/blog/posts/${slug}.svelte`);
 			PostContent = content.default;
 		} catch (error) {
 			console.error(`Failed to load post for slug: ${slug}`, error);
