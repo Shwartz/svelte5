@@ -23,7 +23,7 @@
 	<section class="hero">
 		<p>A product-minded deep dive into design, accessibility and SEO topics</p>
 	</section>
-	<section class="blog">
+	<div class="blog">
 		<header>
 			<h2>Blog</h2>
 			<a href="{base}/thoughts" aria-label="Read all blog posts">Read all
@@ -31,7 +31,7 @@
 			</a>
 		</header>
 		<PostList {compact} {selectedFilter} numberOfPosts={3} />
-	</section>
+	</div>
 	<section class="news">
 		<header>
 			<h2>News</h2>
@@ -68,10 +68,22 @@
 			</article>
 		</main>
 	</section>
+
+	<div class="tooltip">
+		<div class="blog">
+			<div>more content here</div>
+		</div>
+	</div>
 </div>
 
 <!-- svelte-ignore css_unused_selector -->
 <style lang="scss" global>
+	.blog {
+		div {
+			background: purple;
+		}
+	}
+
   .content {
     flex-grow: 1;
   }

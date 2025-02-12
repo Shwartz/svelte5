@@ -42,7 +42,7 @@
 	{#each filteredPosts() as { url, title, description, tags, publishedDate, readingTime, likes, Visual, id }}
 		<Tooltip color={getFirstTagColour(tags as CategoryType[])}>
 			<a href="{url}" title="{title}">
-				<section class="post" style="view-transition-name: post-{id}">
+				<section class="postSnippet" style="view-transition-name: post-{id}">
 					<div class="visualWrap">
 						<div class="visual"
 								 style="background-color: {getFirstTagColour(tags as CategoryType[])}; view-transition-name: visual-{id}">
@@ -91,7 +91,7 @@
   }
 
 	/* MOBILE VIEW: for all the same */
-	.post {
+	.postSnippet {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -113,7 +113,7 @@
 	}
 
 	@media(min-width: 48rem) {
-		.post {
+		.postSnippet {
 			flex-direction: row;
 			align-items: normal;
 		}
@@ -128,7 +128,7 @@
 	}
 
   /* EXPANDED: General styles, Expand as default */
-  .post {
+  .postSnippet {
     gap: 1.5rem;
     margin-top: 1.5rem;
     padding-bottom: 1.5rem;
@@ -298,7 +298,7 @@
   /* Fallback for no JS solution */
   /*   no-js Expanded version */
   :global(.no-js:has(input#toggleCompact[type="checkbox"])) .blog {
-    .post {
+    .postSnippet {
       flex-direction: row;
     }
 
@@ -329,7 +329,7 @@
 
   /*   no-js Compact version */
   :global(.no-js:has(input#toggleCompact[type="checkbox"]:checked)) .blog {
-    .post {
+    .postSnippet {
       flex-direction: row;
     }
 
