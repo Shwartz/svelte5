@@ -68,12 +68,6 @@
 			</article>
 		</main>
 	</section>
-
-	<div class="tooltip">
-		<div class="blog">
-			<div>more content here</div>
-		</div>
-	</div>
 </div>
 
 <!-- svelte-ignore css_unused_selector -->
