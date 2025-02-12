@@ -125,6 +125,16 @@
 		.visualWrap {
 			width: 50%;
 		}
+
+    /* Slightly hacky way to grab every even postSnippets to toggle Visual/Text positions */
+    :global([role="tooltip"]):nth-child(even) .postSnippet {
+      flex-direction: row-reverse;
+    }
+
+    /* revert above for the compact mode */
+    div.blog.compact .postSnippet {
+      flex-direction: row;
+    }
 	}
 
   /* EXPANDED: General styles, Expand as default */
@@ -139,15 +149,6 @@
       flex-direction: row-reverse;
     }
   }
-
-
-	:global([role="tooltip"]):nth-child(even) .postSnippet {
-    flex-direction: row-reverse;
-	}
-
-	div.blog.compact .postSnippet {
-    flex-direction: row;
-	}
 
   /* Toggle background grid lines */
   :global(.gridOff) .postSnippet {

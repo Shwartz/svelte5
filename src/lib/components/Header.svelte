@@ -203,6 +203,7 @@
 
       &.isAnimated {
         visibility: visible;
+				z-index: 1;
       }
     }
 
