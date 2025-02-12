@@ -20,7 +20,7 @@
   }
 
 	/* Not ideal, taking global section.post to make hover on the whole section */
-  :global(section.post):hover .imgHero :global(.path2) {
+  :global(section.postSnippet):hover .imgHero :global(.path2) {
     animation: 0.8s alternate cracking;
   }
 

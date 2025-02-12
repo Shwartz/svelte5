@@ -22,7 +22,7 @@
   }
 
 	/* Not ideal, taking global section.post to make hover on the whole section */
-  :global(section.post):hover .imgHero :global(.path2) {
+  :global(section.postSnippet):hover .imgHero :global(.path2) {
     transform: rotate3d(1, 1, 1, 0);
     filter: blur(0px);
     opacity: 1;

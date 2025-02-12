@@ -35,7 +35,7 @@
   }
 
 	/* Not ideal, taking global section.post to make hover on the whole section */
-  :global(section.post):hover .imgHero  {
+  :global(section.postSnippet):hover .imgHero  {
     .img1 {
       transform: perspective(400px) rotateX(-75deg);
     }

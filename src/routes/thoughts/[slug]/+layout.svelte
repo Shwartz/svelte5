@@ -24,7 +24,7 @@
 		<Header />
 		{#if Visual && tagArr?.length > 0 && id}
 			<div style="background-color: {getFirstTagColour(tagArr)}">
-				<section class="visual post">
+				<section class="visual postSnippet">
 					<div class="svgContainer" style="view-transition-name: visual-{id}">
 						<Visual />
 					</div>
@@ -53,10 +53,4 @@
       }
     }
   }
-
-	h1 {
-		margin: 4rem auto 0;
-		max-width: 43.2rem;
-		line-height: 3.5rem;
-	}
 </style>
