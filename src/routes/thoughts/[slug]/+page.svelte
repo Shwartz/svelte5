@@ -120,7 +120,7 @@
 
   .meta {
     display: flex;
-    max-width: 43.2rem;
+    max-width: var(--post-width);
     align-items: center;
     gap: 1rem;
     margin-inline: auto;

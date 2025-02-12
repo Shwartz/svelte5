@@ -87,7 +87,8 @@
 		<time datetime="01-2025">January, 2025</time>
 	</div>-->
 </section>
-<section class="medium">
+<section class="post">
+	<div>
 	<p>
 		Ever wondered how far you've come?
 		<br />
@@ -120,6 +121,7 @@
 			{Math.round((months - livedMonths) / months * 100)}% remaining
 		</div>
 	</main>
+	</div>
 </section>
 
 <style lang='scss'>
