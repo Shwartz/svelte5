@@ -140,6 +140,15 @@
     }
   }
 
+
+	:global([role="tooltip"]):nth-child(even) .postSnippet {
+    flex-direction: row-reverse;
+	}
+
+	div.blog.compact .postSnippet {
+    flex-direction: row;
+	}
+
   /* Toggle background grid lines */
   :global(.gridOff) .post {
     border-top-color: rgba(0, 0, 0, 0);
@@ -211,7 +220,7 @@
     gap: 0.5rem;
   }
 
-  /* EXPANDED specific styles */
+  /* EXPANDED or COMFORTABLE specific styles */
   .blog.expanded {
   }
 

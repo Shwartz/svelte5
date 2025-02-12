@@ -120,10 +120,16 @@ button.clean {
   align-items: center;
   flex-direction: column;
 
-  code {
+  /* To remove styling if in the table */
+  code:not(table code) {
     font-size: var(--step--2);
     font-family: var(--ff-code), serif;
     color: var(--code-color);
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    line-height: 1rem;
+    border-radius: 0.25rem;
+    background: #cccccc;
   }
 
   .codePen {
@@ -155,6 +161,10 @@ button.clean {
 
   p img {
     margin-inline: auto;
+  }
+
+  a {
+    text-decoration: underline;
   }
 }
 
