@@ -166,6 +166,10 @@ button.clean {
   a {
     text-decoration: underline;
   }
+
+  tr:nth-child(even) {
+    background-color: var(--table-row-bg);
+  }
 }
 
 

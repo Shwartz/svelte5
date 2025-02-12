@@ -25,6 +25,10 @@
   --post-width: 40.125rem;
   --post-l-width: 64rem;
 
+  --pastel-cream-light-mode: #F0EBD580;
+  --pastel-cream-dark-mode: #F0EBD505;
+  --table-row-bg: var(--pastel-cream-light-mode);
+
   /** fonts */
   --step--2: clamp(0.7813rem, 0.7747rem + 0.0326vi, 0.8rem);
   --step--1: clamp(0.9375rem, 0.9158rem + 0.1087vi, 1rem);
@@ -46,6 +50,7 @@ html[data-theme='dark'] {
   --text: #FFF;
   --textLight: rgba(255, 255, 255, 0.4);
   --code-color: var(--pastel-purple);
+  --table-row-bg: var(--pastel-cream-dark-mode);
 }
 
 
