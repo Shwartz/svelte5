@@ -3,11 +3,40 @@
 	import Header from '$lib/components/Header.svelte';
 	import { page } from '$app/stores';
 	import { base } from '$app/paths';
+	import ToggleListGrid from '$lib/components/ToggleListGrid.svelte';
+	import { onMount } from 'svelte';
 
 	const { news } = $page.data;
 	const newsCount = news.posts.length;
+	let checked = $state(false);
+	let compact = $state(false);
 
 	console.log({ news });
+
+	onMount(() => {
+		const savedState = localStorage.getItem('themeNewsListGrid');
+		checked = savedState === 'true';
+		compact = checked;
+		localStorage.setItem('themeNewsListGrid', checked.toString());
+	})
+
+	function toggleCompact() {
+		checked = !checked;
+		localStorage.setItem('themeNewsListGrid', checked.toString());
+		toggleView();
+	}
+
+	function toggleView() {
+		/* Fallback if no support for transition and can do something else */
+		if (!document.startViewTransition) {
+			compact = checked;
+			return;
+		}
+
+		document.startViewTransition(() => {
+			compact = checked; // this is how I can trigger transition
+		});
+	}
 </script>
 
 <div class="news">
@@ -21,9 +50,14 @@
 		specific article(s) about a particular feature.<br />
 		Now, I'm transferring my archive to the web using <a href="https://svelte.dev/">SvelteKit</a> and Notion's API.</p>
 
-
-
-	<ul>
+	<div class="headerTags">
+			<div>{newsCount} items</div>
+			<div>
+				<ToggleListGrid {checked} toggleCompact={toggleCompact} />
+			</div>
+	</div>
+	<p style="color: darkred">{checked}</p>
+	<ul class={checked ? `list` : `grid`}>
 		{#each news.posts as post}
 			<li>
 				<h5><a href='{base}/news-archive/{post.slug}'>{post.title}</a></h5>
@@ -61,4 +95,13 @@
       width: 50%;
     }
   }
+
+	.headerTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+    padding: 4rem 0 1.5rem;
+    border-bottom: 1px dotted var(--grid-color);
+	}
 </style>

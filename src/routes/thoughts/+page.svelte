@@ -52,6 +52,7 @@
 		});
 	}
 </script>
+
 <div class="posts">
 	<Header />
 	<h1 class="frankTitle">blog</h1>
