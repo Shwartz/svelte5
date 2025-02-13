@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import type { PageData } from './$types';
+	// import type { PageData } from './$types';
 	import { tagState } from '$lib/stores/tagState.svelte';
 	import Tag from '$lib/components/snippets/Tag.svelte';
 	import { type CategoryType } from '$lib/utils/categoryColors';
 	import { TrOutlineArrowBackUp, TrOutlineCalendarMonth, TrOutlineClock, TrOutlineHeart } from 'svelte-icons-pack/tr';
 	import { Icon } from 'svelte-icons-pack';
 	import { base } from '$app/paths';
+	import { page} from '$app/stores';
 
-	let { data }: { data: PageData } = $props();
-	const { slug, postData: { id, Visual, readingTime, tags, title, publishedDate, likes } } = $derived(data);
+	// let { data }: { data: PageData } = $props();
+	const { slug, postData: { id, Visual, readingTime, tags, title, publishedDate, likes } } = $page.data;
 	let PostContent = $state(null);
 
 	$effect(() => {
