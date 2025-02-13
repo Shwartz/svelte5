@@ -8,11 +8,11 @@
 	import { Icon } from 'svelte-icons-pack';
 	import { base } from '$app/paths';
 
-	export let data: PageData;
-	const { slug, postData: { id, Visual, readingTime, tags, title, publishedDate, likes } } = data;
-	let PostContent: any;
+	let { data }: { data: PageData } = $props();
+	const { slug, postData: { id, Visual, readingTime, tags, title, publishedDate, likes } } = $derived(data);
+	let PostContent = $state(null);
 
-	onMount(() => {
+	$effect(() => {
 		tagState.id = id;
 		tagState.tagArr = tags;
 		tagState.title = title;
@@ -70,17 +70,16 @@
 	</div>
 
 {/if}
+
 {#if PostContent}
-	<div>
-		<svelte:component this={PostContent} />
-	</div>
+	<svelte:component this={PostContent} />
 {:else}
 	<p>Loading post content...</p>
 {/if}
 
 <style lang="scss">
   h1 {
-		margin-top: 2rem;
+    margin-top: 2rem;
     padding: 2rem 0;
     border-bottom: 1px dotted var(--grid-color);
     line-height: 3.5rem;
@@ -95,23 +94,23 @@
   .metaWrap {
     border-bottom: 1px dotted var(--grid-color);
 
-		+ .metaWrap {
+    + .metaWrap {
       margin-bottom: 2rem;
     }
   }
 
-	.meta {
+  .meta {
     padding: 1rem 0;
-	}
+  }
 
   :global(.gridOff) :is(h1, .metaWrap) {
     border-bottom-color: rgba(0, 0, 0, 0);
   }
 
-	.second {
-    border-top: 1px solid rgba(0,0,0,0);
-    border-bottom: 1px solid rgba(0,0,0,0);
-	}
+  .second {
+    border-top: 1px solid rgba(0, 0, 0, 0);
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+  }
 
   :global(.gridOff) .second {
     border-top: 1px solid var(--text);
@@ -140,7 +139,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-		text-decoration: none;
+    text-decoration: none;
   }
 
   .icons {
