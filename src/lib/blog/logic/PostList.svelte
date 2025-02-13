@@ -88,6 +88,11 @@
     a:hover {
       cursor: url('/src/assets/svg/cursor.svg') 16 16, pointer;
     }
+
+    a {
+      text-decoration: none;
+      outline: 1px solid red;
+    }
   }
 
 	/* MOBILE VIEW: for all the same */

@@ -75,9 +75,6 @@
 
     a {
       display: block;
-      text-decoration: underline;
-      text-decoration-style: dotted;
-      text-underline-offset: 0.25rem;
     }
 
 		.smallText {

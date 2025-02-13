@@ -2,14 +2,41 @@
 	import Header from '$lib/components/Header.svelte';
 </script>
 
-<div class="content">
-	<Header/>
-	<h1>News Archive</h1>
+<div class="news">
+	<Header />
+	<h1 class="frankTitle">news</h1>
+	<p class="intro">To stay with the latest trends in the Front-end world, I skim the web, <a href="https://bsky.app/profile/andrissvarcs.bsky.social">BlueSky</a>  and several
+		newsletters during the week.
+		Naturally, as a active <a href="https://www.notion.com/">Notion</a> user, I jot down whatever interests me. I found it handy more than once to search for THAT
+		specific article(s) about a particular feature.
+		Now, I'm transferring my archive to the web using <a href="https://svelte.dev/">SvelteKit</a> and Notion's API.</p>
 </div>
 
 <!-- svelte-ignore css_unused_selector -->
 <style lang="scss">
-	.content {
-		flex-grow: 1;
-	}
+  .news {
+    flex-grow: 1;
+  }
+
+  .frankTitle {
+    font-size: 9rem;
+    color: var(--textLight);
+    line-height: normal;
+  }
+
+  .intro {
+    width: 100%;
+  }
+
+  @media (min-width: 600px) {
+    .intro {
+      width: 75%;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .intro {
+      width: 50%;
+    }
+  }
 </style>

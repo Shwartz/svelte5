@@ -140,6 +140,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+		text-decoration: none;
   }
 
   .icons {
