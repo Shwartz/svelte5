@@ -61,11 +61,11 @@
     position: fixed;
     background-color: rgba(0, 0, 0, 0.9);
     color: white;
-    padding: 5px;
+    padding: 0 8px;
     border-radius: 4px;
     font-size: px-to-rem(11px);
     pointer-events: none;
-    transform: translate(-60%, -190%);
+    transform: translate(0, 0);
     z-index: 1000;
     white-space: nowrap;
     opacity: 0;

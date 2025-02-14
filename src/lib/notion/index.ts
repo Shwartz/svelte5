@@ -13,8 +13,8 @@ export const getAllPosts = pMemoize(async () => {
 	try {
 		const posts = await getDatabaseById(NOTION_DATABASE_ID);
 
-		if (posts?.length > 0) {
-			console.log('getAllPosts: ', posts.length);
+		if (posts && posts?.length > 0) {
+			// console.log('getAllPosts: ', posts.length);
 			return { posts };
 		} else {
 			return {
