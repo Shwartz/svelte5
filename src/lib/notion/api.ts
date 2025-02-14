@@ -1,7 +1,8 @@
 // src/lib/notion/api.ts
+import { NOTION_TOKEN } from '$env/static/private';
+//import NOTION_TOKEN from process.env.NOTION_TOKEN;
 import { createSlug } from '$lib/utils/slug';
 import { Client } from '@notionhq/client';
-import { NOTION_TOKEN } from '$env/static/private';
 
 export const notionClient: Client = new Client({ auth: NOTION_TOKEN });
 
@@ -29,7 +30,7 @@ export const getDatabaseById = async (ID: string) => {
 			]
 		});
 
-		console.log('After Request happened - Database: ', database.results.length);
+		// console.log('After Request happened - Database: ', database.results.length);
 
 		if (database.results.length > 0) {
 			posts = database.results.map((item: any) => {

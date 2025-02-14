@@ -1,5 +1,6 @@
 // lib/notion/index.ts
 import { NOTION_DATABASE_ID } from '$env/static/private';
+//import NOTION_DATABASE_ID from process.env.NOTION_DATABASE_ID;
 import { getDatabaseById, getPageById } from './api';
 import pMemoize from 'p-memoize';
 import ExpiryMap from "expiry-map";

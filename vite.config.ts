@@ -33,8 +33,11 @@ export default defineConfig({
 			}
 		},
 	},
-
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
+	},
+	define: {
+		'process.env.NOTION_TOKEN': JSON.stringify(process.env.NOTION_TOKEN),
+		'process.env.NOTION_DATABASE_ID': JSON.stringify(process.env.NOTION_DATABASE_ID)
 	}
 });
